@@ -1,0 +1,25 @@
+
+modLoader="javafml"
+loaderVersion="[45,)"
+license="All rights reserved"
+[[mods]]
+modId="sporenmore"
+version="1.0"
+displayName="Spore N' More"
+logoFile="examplemod.png"
+authors="Cosmo, Copper-Kid"
+description='''
+This is a long form description of the mod. You can write whatever you want here
+'''
+[[dependencies.sporenmore]]
+    modId="forge"
+    mandatory=true
+    versionRange="[45,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.sporenmore]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.19.4,1.20)"
+    ordering="NONE"
+    side="BOTH"

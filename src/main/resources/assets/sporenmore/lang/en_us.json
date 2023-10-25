@@ -3,6 +3,10 @@
   "entity.sporenmore.the_crunch": "The Crunch",
 
   "item.sporenmore.fur": "Fur",
+  "item.sporenmore.belt": "Belt",
   "item.sporenmore.furry_hoodie": "Fox Hoodie",
-  "item.sporenmore.fur_bundle": "Fur Bundle"
+  "item.sporenmore.fur_bundle": "Fur Bundle",
+  "item.sporenmore.the_crunch_spawn_egg": "The Crunch Spawn Egg",
+  "item.sporenmore.buldging_fox_spawn_egg": "Buldging Fox Spawn Egg",
+  "creativemodetab.spore_n_more": "Spore N' More"
 }

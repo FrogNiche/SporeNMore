@@ -1,10 +1,14 @@
 package com.cosmo.sporenmore;
 
+import com.cosmo.sporenmore.client.models.entity.ModelBuldgingSporeFox;
 import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
+import com.cosmo.sporenmore.server.entity.spore_mobs.EntityBuldgingSporeFox;
 import com.cosmo.sporenmore.server.entity.the_crunch.EntityCrunch;
 import com.cosmo.sporenmore.client.models.entity.ModelCrunch;
 import com.cosmo.sporenmore.server.item.SNMItemHandler;
+import com.cosmo.sporenmore.server.item.belt.BeltItem;
 import com.cosmo.sporenmore.server.item.tab.SNMTab;
+import com.cosmo.sporenmore.server.network.SNNetworkHandler;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -56,10 +60,12 @@ public class SporeNMore {
     private void registerEntityAttributes(EntityAttributeCreationEvent event) {
 
         event.put(SNMEntityHandler.THE_CRUNCH.get(), EntityCrunch.makeAttributes());
+        event.put(SNMEntityHandler.BULDGING_SPORE_FOX.get(), EntityBuldgingSporeFox.makeAttributes());
     }
 
 
     private void commonSetup(final FMLCommonSetupEvent event) {
+        event.enqueueWork(SNNetworkHandler::register);
         LOGGER.info("HELLO FROM COMMON SETUP");
         LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
     }
@@ -70,6 +76,7 @@ public class SporeNMore {
 
     private void clientSetup(FMLClientSetupEvent event) {
         EntityRenderers.register(SNMEntityHandler.THE_CRUNCH.get(), makeRenderer(new ModelCrunch()));
+        EntityRenderers.register(SNMEntityHandler.BULDGING_SPORE_FOX.get(), makeRenderer(new ModelBuldgingSporeFox()));
     }
 
     public static class HelperGeoRenderer<T extends LivingEntity & GeoEntity> extends GeoEntityRenderer<T> {
@@ -83,8 +90,10 @@ public class SporeNMore {
         if (event.getTab() == SNMTab.SPORE_N_MORE) {
             event.accept(SNMItemHandler.FUR);
             event.accept(SNMItemHandler.FUR_BUNDLE);
+            event.accept(SNMItemHandler.BELT);
             event.accept(SNMItemHandler.FURRY_HOODIE);
             event.accept(SNMItemHandler.CRUNCH_SPAWN_EGG);
+            event.accept(SNMItemHandler.BULDGING_SPORE_FOX_SPAWN_EGG);
         }
     }
 
@@ -99,6 +108,7 @@ public class SporeNMore {
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(SNMEntityHandler.THE_CRUNCH.get(), makeRenderer(new ModelCrunch()));
             EntityRenderers.register(SNMEntityHandler.BULDGING_SPORE_FOX.get(), makeRenderer(new ModelBuldgingSporeFox()));
+
         }
 
 

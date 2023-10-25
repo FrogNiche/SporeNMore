@@ -80,10 +80,10 @@ public class EntityBuldgingSporeFox extends Monster implements GeoEntity {
 
     }
 
-    protected <T extends GeoAnimatable> PlayState attackPredicate(AnimationState<T> event) {
-        if (this.swinging && event.getController().getAnimationState().equals(AnimationController.State.RUNNING)) {
-            event.getController().forceAnimationReset();
-            event.getController().setAnimation(RawAnimation.begin().then("animation.entity_buldging_spore_fox.kick",
+    protected <T extends GeoAnimatable> PlayState attackPredicate(AnimationState<T> entityBuldgingSporeFoxAnimationState) {
+        if (this.swinging && entityBuldgingSporeFoxAnimationState.getController().getAnimationState().equals(AnimationController.State.RUNNING)) {
+            entityBuldgingSporeFoxAnimationState.getController().forceAnimationReset();
+            entityBuldgingSporeFoxAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_buldging_spore_fox.kick",
                     Animation.LoopType.PLAY_ONCE));
         }
         return PlayState.CONTINUE;

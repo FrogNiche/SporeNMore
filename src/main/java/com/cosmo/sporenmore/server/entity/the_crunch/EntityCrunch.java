@@ -63,22 +63,22 @@ public class EntityCrunch extends Monster implements GeoEntity {
                 "controller", 5, this::predicate));
     }
 
-    private PlayState predicate(AnimationState<EntityCrunch> devourerEntityAnimationState) {
+    private PlayState predicate(AnimationState<EntityCrunch> entityCrunchAnimationState) {
 
-        if (devourerEntityAnimationState.isMoving()) {
-            devourerEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_the_crunch.run", Animation.LoopType.LOOP));
+        if (entityCrunchAnimationState.isMoving()) {
+            entityCrunchAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_the_crunch.run", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         } else {
-            devourerEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_the_crunch.idle", Animation.LoopType.LOOP));
+            entityCrunchAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_the_crunch.idle", Animation.LoopType.LOOP));
         }
         return PlayState.CONTINUE;
 
     }
 
-    protected <T extends GeoAnimatable> PlayState attackPredicate(AnimationState<T> event) {
-        if (this.swinging && event.getController().getAnimationState().equals(AnimationController.State.RUNNING)) {
-            event.getController().forceAnimationReset();
-            event.getController().setAnimation(RawAnimation.begin().then("animation.entity_the_crunch.swipe",
+    protected <T extends GeoAnimatable> PlayState attackPredicate(AnimationState<T> entityCrunchAnimationState) {
+        if (this.swinging && entityCrunchAnimationState.getController().getAnimationState().equals(AnimationController.State.RUNNING)) {
+            entityCrunchAnimationState.getController().forceAnimationReset();
+            entityCrunchAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_the_crunch.swipe",
                     Animation.LoopType.PLAY_ONCE));
         }
         return PlayState.CONTINUE;

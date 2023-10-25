@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "sporenmore:item/belt_extending_4"
+  }
+}

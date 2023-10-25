@@ -1,23 +1,24 @@
 package com.cosmo.sporenmore.client.models.entity;
 
 import com.cosmo.sporenmore.SporeNMore;
+import com.cosmo.sporenmore.server.entity.spore_mobs.EntityBuldgingSporeFox;
 import com.cosmo.sporenmore.server.entity.the_crunch.EntityCrunch;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
 
-public class ModelBuldgingSporeFox extends GeoModel<EntityCrunch> {
+public class ModelBuldgingSporeFox extends GeoModel<EntityBuldgingSporeFox> {
     @Override
-    public ResourceLocation getModelResource(EntityCrunch object) {
-        return SporeNMore.modLoc("geo/entity/entity_the_crunch.geo.json");
+    public ResourceLocation getModelResource(EntityBuldgingSporeFox object) {
+        return SporeNMore.modLoc("geo/entity/entity_buldging_spore_fox.geo.json");
     }
 
     @Override
-    public ResourceLocation getTextureResource(EntityCrunch object) {
-        return SporeNMore.modLoc("textures/entity/tex_crunch.png");
+    public ResourceLocation getTextureResource(EntityBuldgingSporeFox object) {
+        return SporeNMore.modLoc("textures/entity/tex_buldging_spore_fox.png");
     }
 
     @Override
-    public ResourceLocation getAnimationResource(EntityCrunch animatable) {
-        return SporeNMore.modLoc("animations/entity/entity_the_crunch.animation.json");
+    public ResourceLocation getAnimationResource(EntityBuldgingSporeFox animatable) {
+        return SporeNMore.modLoc("animations/entity/entity_buldging_spore_fox.animation.json");
     }
 }

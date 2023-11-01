@@ -9,7 +9,7 @@ displayName="Spore N' More"
 logoFile="examplemod.png"
 authors="Cosmo, Copper-Kid"
 description='''
-This is a long form description of the mod. You can write whatever you want here
+Spore N' More is a mod that adds custom foxes, which some are related to Minecraft Legends, while the rest are custom
 '''
 [[dependencies.sporenmore]]
     modId="forge"

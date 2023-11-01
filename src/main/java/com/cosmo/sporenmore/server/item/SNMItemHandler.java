@@ -3,8 +3,8 @@ package com.cosmo.sporenmore.server.item;
 import com.cosmo.sporenmore.SporeNMore;
 import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
 import com.cosmo.sporenmore.server.item.armour.armor.ModArmorMaterials;
+import com.cosmo.sporenmore.server.item.armour.belt.BeltArmour;
 import com.cosmo.sporenmore.server.item.armour.furry_hoodie.FurryHoodie;
-import com.cosmo.sporenmore.server.item.belt.BeltItem;
 import net.minecraft.world.item.*;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -22,15 +22,19 @@ public class SNMItemHandler {
             () -> new ForgeSpawnEggItem(SNMEntityHandler.THE_CRUNCH, 0x7e4b27, 0x9e6238,
                     new Item.Properties()));
 
+    public static final RegistryObject<Item> GIANT_SPAWN_EGG = ITEMS.register("giant_spawn_egg",
+            () -> new ForgeSpawnEggItem(SNMEntityHandler.LE_GIANTE, 0x7e4b27, 0x9e6238,
+                    new Item.Properties()));
+
     public static final RegistryObject<Item> BULDGING_SPORE_FOX_SPAWN_EGG = ITEMS.register("buldging_spore_fox_spawn_egg",
             () -> new ForgeSpawnEggItem(SNMEntityHandler.BULDGING_SPORE_FOX, 0x874056, 0x18050f,
                     new Item.Properties()));
     // Items
 public static final RegistryObject<Item> FUR = ITEMS.register("fur",
-        () -> new Item(new Item.Properties()));
+        () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
-    public static final RegistryObject<Item> BELT = ITEMS.register("belt",
-            () -> new BeltItem(Tiers.NETHERITE, 3, -2.4F, (new Item.Properties()).fireResistant()));
+
+
 
 
     public static final RegistryObject<BundleItem> FUR_BUNDLE = ITEMS.register("fur_bundle",
@@ -39,6 +43,10 @@ public static final RegistryObject<Item> FUR = ITEMS.register("fur",
 // Armor Items
     public static final RegistryObject<FurryHoodie> FURRY_HOODIE = ITEMS.register("furry_hoodie",
             () -> new FurryHoodie(ModArmorMaterials.SNM_ARMORS, ArmorItem.Type.HELMET,
+                    new Item.Properties().rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<BeltArmour> BELT = ITEMS.register("belt",
+            () -> new BeltArmour(ModArmorMaterials.SNM_ARMORS, ArmorItem.Type.CHESTPLATE,
                     new Item.Properties().rarity(Rarity.UNCOMMON)));
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

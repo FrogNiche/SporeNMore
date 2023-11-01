@@ -1,12 +1,19 @@
 {
   "_comment": "Entities",
   "entity.sporenmore.the_crunch": "The Crunch",
+  "entity.sporenmore.le_giante": "Lé Giant",
 
   "item.sporenmore.fur": "Fur",
-  "item.sporenmore.belt": "Belt",
   "item.sporenmore.furry_hoodie": "Fox Hoodie",
+  "item.sporenmore.belt": "Belt",
+  "block.sporenmore.pillow": "Pillow",
   "item.sporenmore.fur_bundle": "Fur Bundle",
   "item.sporenmore.the_crunch_spawn_egg": "The Crunch Spawn Egg",
   "item.sporenmore.buldging_fox_spawn_egg": "Buldging Fox Spawn Egg",
+  "item.sporenmore.giant_spawn_egg": "Lé Giante Spawn Egg",
+
+  "block.sporenmore.block_of_fur": "Block Of Fur",
+
   "creativemodetab.spore_n_more": "Spore N' More"
+
 }

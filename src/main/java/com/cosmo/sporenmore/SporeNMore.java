@@ -1,12 +1,14 @@
 package com.cosmo.sporenmore;
 
-import com.cosmo.sporenmore.client.models.entity.ModelBuldgingSporeFox;
-import com.cosmo.sporenmore.client.models.entity.ModelGiant;
+import com.cosmo.sporenmore.client.models.entity.*;
 import com.cosmo.sporenmore.server.block.block.SNMBlockHandler;
 import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
+import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityCaveFox;
+import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityFatFox;
+import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityTallFox;
 import com.cosmo.sporenmore.server.entity.spore_mobs.EntityBuldgingSporeFox;
+import com.cosmo.sporenmore.server.entity.spore_mobs.EntityPoostle;
 import com.cosmo.sporenmore.server.entity.the_crunch.EntityCrunch;
-import com.cosmo.sporenmore.client.models.entity.ModelCrunch;
 import com.cosmo.sporenmore.server.entity.the_crunch.EntityLeGiant;
 import com.cosmo.sporenmore.server.item.SNMItemHandler;
 import com.cosmo.sporenmore.server.item.tab.SNMTab;
@@ -64,7 +66,11 @@ public class SporeNMore {
 
         event.put(SNMEntityHandler.THE_CRUNCH.get(), EntityCrunch.makeAttributes());
         event.put(SNMEntityHandler.LE_GIANTE.get(), EntityLeGiant.createAttributes());
+        event.put(SNMEntityHandler.POOSTLE.get(), EntityPoostle.createAttributes());
         event.put(SNMEntityHandler.BULDGING_SPORE_FOX.get(), EntityBuldgingSporeFox.makeAttributes());
+        event.put(SNMEntityHandler.CAVE_FOX.get(), EntityCaveFox.makeAttributes());
+        event.put(SNMEntityHandler.TALL_FOX.get(), EntityTallFox.createAttributes());
+        event.put(SNMEntityHandler.FAT_FOX.get(), EntityFatFox.createAttributes());
     }
 
 
@@ -80,7 +86,16 @@ public class SporeNMore {
     private void clientSetup(FMLClientSetupEvent event) {
         EntityRenderers.register(SNMEntityHandler.THE_CRUNCH.get(), makeRenderer(new ModelCrunch()));
         EntityRenderers.register(SNMEntityHandler.LE_GIANTE.get(), makeRenderer(new ModelGiant()));
-        EntityRenderers.register(SNMEntityHandler.BULDGING_SPORE_FOX.get(), makeRenderer(new ModelBuldgingSporeFox()));
+        EntityRenderers.register(SNMEntityHandler.POOSTLE.get(), makeRenderer(new ModelPoostle()));
+        EntityRenderers.register(SNMEntityHandler.BULDGING_SPORE_FOX.get(),
+                makeRenderer(new ModelBuldgingSporeFox()));
+        EntityRenderers.register(SNMEntityHandler.CAVE_FOX.get(),
+                makeRenderer(new ModelCaveFox()));
+        EntityRenderers.register(SNMEntityHandler.FAT_FOX.get(),
+                makeRenderer(new ModelFatFox()));
+        EntityRenderers.register(SNMEntityHandler.TALL_FOX.get(),
+                makeRenderer(new ModelTallFox()));
+
     }
 
     public static class HelperGeoRenderer<T extends LivingEntity & GeoEntity> extends GeoEntityRenderer<T> {
@@ -92,15 +107,17 @@ public class SporeNMore {
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
         if (event.getTab() == SNMTab.SPORE_N_MORE) {
-            event.accept(SNMItemHandler.FUR);
+          /*  event.accept(SNMItemHandler.FUR);
             event.accept(SNMItemHandler.FUR_BUNDLE);
             event.accept(SNMItemHandler.FURRY_HOODIE);
-            event.accept(SNMItemHandler.BELT);
+            event.accept(SNMItemHandler.BELT); */
             event.accept(SNMItemHandler.CRUNCH_SPAWN_EGG);
             event.accept(SNMItemHandler.GIANT_SPAWN_EGG);
-            event.accept(SNMItemHandler.BULDGING_SPORE_FOX_SPAWN_EGG);
+         //   event.accept(SNMItemHandler.CAVE_FOX_SPAWN_EGG);
+          //  event.accept(SNMItemHandler.BULDGING_SPORE_FOX_SPAWN_EGG);
+        //    event.accept(SNMItemHandler.FLYING_SPORED_FOX_SPAWN_EGG);
 
-            event.accept(SNMBlockHandler.BLOCK_OF_FUR);
+          //  event.accept(SNMBlockHandler.BLOCK_OF_FUR);
         }
     }
 
@@ -114,8 +131,12 @@ public class SporeNMore {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(SNMEntityHandler.THE_CRUNCH.get(), makeRenderer(new ModelCrunch()));
+            EntityRenderers.register(SNMEntityHandler.CAVE_FOX.get(), makeRenderer(new ModelCaveFox()));
             EntityRenderers.register(SNMEntityHandler.LE_GIANTE.get(), makeRenderer(new ModelGiant()));
+            EntityRenderers.register(SNMEntityHandler.POOSTLE.get(), makeRenderer(new ModelPoostle()));
             EntityRenderers.register(SNMEntityHandler.BULDGING_SPORE_FOX.get(), makeRenderer(new ModelBuldgingSporeFox()));
+            EntityRenderers.register(SNMEntityHandler.TALL_FOX.get(), makeRenderer(new ModelTallFox()));
+            EntityRenderers.register(SNMEntityHandler.FAT_FOX.get(), makeRenderer(new ModelFatFox()));
 
         }
 

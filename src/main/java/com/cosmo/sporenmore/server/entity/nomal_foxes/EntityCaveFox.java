@@ -1,4 +1,4 @@
-package com.cosmo.sporenmore.server.entity.the_crunch;
+package com.cosmo.sporenmore.server.entity.nomal_foxes;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.damagesource.DamageSource;
@@ -21,16 +21,16 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class EntityCrunch extends Monster implements GeoEntity {
+public class EntityCaveFox extends Monster implements GeoEntity {
 
     public AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
     public static final AttributeSupplier makeAttributes() {
-        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 200)
-                .add(Attributes.ARMOR, 15000)
-                .add(Attributes.MOVEMENT_SPEED, 0.4d)
-                .add(Attributes.ATTACK_DAMAGE, 5)
-                .add(Attributes.KNOCKBACK_RESISTANCE, 0.1d).build();
+        return Monster.createMonsterAttributes().add(Attributes.MAX_HEALTH, 20)
+                .add(Attributes.ARMOR, 10)
+                .add(Attributes.MOVEMENT_SPEED, 0.3d)
+                .add(Attributes.ATTACK_DAMAGE, 3)
+                .add(Attributes.KNOCKBACK_RESISTANCE, 0.6d).build();
 
 
     }
@@ -49,7 +49,7 @@ public class EntityCrunch extends Monster implements GeoEntity {
     }
     protected AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
 
-    public EntityCrunch
+    public EntityCaveFox
             (EntityType<? extends Monster> p_33002_, Level p_33003_) {
         super(p_33002_, p_33003_);
     }
@@ -63,23 +63,23 @@ public class EntityCrunch extends Monster implements GeoEntity {
                 "controller", 5, this::predicate));
     }
 
-    private PlayState predicate(AnimationState<EntityCrunch> entityCrunchAnimationState) {
+    private PlayState predicate(AnimationState<EntityCaveFox> caveFoxAnimationState) {
 
-        if (entityCrunchAnimationState.isMoving()) {
-            entityCrunchAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_the_crunch.walk", Animation.LoopType.LOOP));
+        if (caveFoxAnimationState.isMoving()) {
+            caveFoxAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_cave_fox.walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         } else {
-            entityCrunchAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_the_crunch.idle", Animation.LoopType.LOOP));
+            caveFoxAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_cave_fox.idle", Animation.LoopType.LOOP));
         }
         return PlayState.CONTINUE;
 
     }
 
-    private PlayState attackPredicate(AnimationState<EntityCrunch> event) {
-        if (this.swinging && event.getController().getAnimationState() == AnimationController.State.RUNNING) {
-            event.getController().forceAnimationReset();
-            event.getController().setAnimation(RawAnimation.begin().then("animation.entity_the_crunch.slam", Animation.LoopType.PLAY_ONCE));
-            this.swinging = false;
+    protected <T extends GeoAnimatable> PlayState attackPredicate(AnimationState<T> caveFoxAnimationState) {
+        if (this.swinging && caveFoxAnimationState.getController().getAnimationState().equals(AnimationController.State.RUNNING)) {
+            caveFoxAnimationState.getController().forceAnimationReset();
+            caveFoxAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_cave_fox.swipe",
+                    Animation.LoopType.PLAY_ONCE));
         }
         return PlayState.CONTINUE;
     }

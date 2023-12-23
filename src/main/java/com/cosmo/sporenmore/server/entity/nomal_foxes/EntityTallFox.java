@@ -1,4 +1,4 @@
-package com.cosmo.sporenmore.server.entity.the_crunch;
+package com.cosmo.sporenmore.server.entity.nomal_foxes;
 
 import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
 import net.minecraft.server.level.ServerLevel;
@@ -25,11 +25,11 @@ import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
-public class EntityLeGiant extends Animal implements GeoEntity {
+public class EntityTallFox extends Animal implements GeoEntity {
     public static final String CONTROLLER_NAME = "controller";
     protected AnimatableInstanceCache factory = GeckoLibUtil.createInstanceCache(this);
     public AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
-    public EntityLeGiant(EntityType<? extends Animal> p_27557_, Level p_27558_) {
+    public EntityTallFox(EntityType<? extends Animal> p_27557_, Level p_27558_) {
         super(p_27557_, p_27558_);
     }
     public static final AttributeSupplier createAttributes(){
@@ -41,12 +41,7 @@ public class EntityLeGiant extends Animal implements GeoEntity {
     @Override
     protected void registerGoals() {
         super.registerGoals();
-        this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Player.class,
 
-                16f, 1.6f, 1.4f){
-
-        });
-//check out the bat please to see how they fly
         this.goalSelector.addGoal(3, new LookAtPlayerGoal(this, Player.class, 20.0F){
 
         });
@@ -63,7 +58,7 @@ public class EntityLeGiant extends Animal implements GeoEntity {
     @Nullable
     @Override
     public AgeableMob getBreedOffspring(ServerLevel level, AgeableMob animal) {
-        return SNMEntityHandler.LE_GIANTE.get().create(level);
+        return SNMEntityHandler.TALL_FOX.get().create(level);
     }
 
     @Override
@@ -72,13 +67,13 @@ public class EntityLeGiant extends Animal implements GeoEntity {
                 "controller", 5, this::predicate));
     }
 
-    private PlayState predicate(AnimationState<EntityLeGiant> entityLeGiantAnimationState) {
+    private PlayState predicate(AnimationState<EntityTallFox> tallFoxAnimationState) {
 
-        if (entityLeGiantAnimationState.isMoving()) {
-            entityLeGiantAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_le_giant.walk", Animation.LoopType.LOOP));
+        if (tallFoxAnimationState.isMoving()) {
+            tallFoxAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.tall_legged_fox.walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         } else {
-            entityLeGiantAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_le_giant.idle", Animation.LoopType.LOOP));
+            tallFoxAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.tall_legged_fox.idle", Animation.LoopType.LOOP));
         }
         return PlayState.CONTINUE;
 

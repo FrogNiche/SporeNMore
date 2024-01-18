@@ -76,10 +76,10 @@ public class EntityCrunch extends Monster implements GeoEntity {
     }
 
     private PlayState attackPredicate(AnimationState<EntityCrunch> event) {
-        if (this.swinging && event.getController().getAnimationState() == AnimationController.State.RUNNING) {
+        if (this.swinging && event.getController().getAnimationState() == AnimationController.State.STOPPED) {
             event.getController().forceAnimationReset();
             event.getController().setAnimation(RawAnimation.begin().then("animation.entity_the_crunch.slam", Animation.LoopType.PLAY_ONCE));
-            this.swinging = false;
+            this.swinging = true;
         }
         return PlayState.CONTINUE;
     }

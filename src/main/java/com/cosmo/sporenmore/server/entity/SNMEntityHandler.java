@@ -6,6 +6,7 @@ import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityFatFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityTallFox;
 import com.cosmo.sporenmore.server.entity.spore_mobs.EntityBuldgingSporeFox;
 import com.cosmo.sporenmore.server.entity.spore_mobs.EntityPoostle;
+import com.cosmo.sporenmore.server.entity.spore_mobs.devourer.EntityDevourer;
 import com.cosmo.sporenmore.server.entity.the_crunch.EntityCrunch;
 import com.cosmo.sporenmore.server.entity.the_crunch.EntityLeGiant;
 import net.minecraft.world.entity.Entity;
@@ -19,6 +20,10 @@ public class SNMEntityHandler {
 
     public static final DeferredRegister<EntityType<?>> SNM_ENTITY = DeferredRegister.create(ForgeRegistries.
                     ENTITY_TYPES, SporeNMore.MOD_ID);
+
+
+    public static final RegistryObject<EntityType<EntityDevourer>> DEVOURER = register("devourer", EntityType.Builder.of(EntityDevourer::new,
+            MobCategory.MONSTER).sized(2f, 7f));
 
     public static final RegistryObject<EntityType<EntityCrunch>> THE_CRUNCH = register("the_crunch", EntityType.Builder.of(EntityCrunch::new,
             MobCategory.MONSTER));

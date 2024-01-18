@@ -8,6 +8,8 @@ import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityFatFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityTallFox;
 import com.cosmo.sporenmore.server.entity.spore_mobs.EntityBuldgingSporeFox;
 import com.cosmo.sporenmore.server.entity.spore_mobs.EntityPoostle;
+import com.cosmo.sporenmore.server.entity.spore_mobs.devourer.DevourerRenderer;
+import com.cosmo.sporenmore.server.entity.spore_mobs.devourer.EntityDevourer;
 import com.cosmo.sporenmore.server.entity.the_crunch.EntityCrunch;
 import com.cosmo.sporenmore.server.entity.the_crunch.EntityLeGiant;
 import com.cosmo.sporenmore.server.item.SNMItemHandler;
@@ -63,7 +65,7 @@ public class SporeNMore {
     }
 
     private void registerEntityAttributes(EntityAttributeCreationEvent event) {
-
+        event.put(SNMEntityHandler.DEVOURER.get(), EntityDevourer.makeAttributes());
         event.put(SNMEntityHandler.THE_CRUNCH.get(), EntityCrunch.makeAttributes());
         event.put(SNMEntityHandler.LE_GIANTE.get(), EntityLeGiant.createAttributes());
         event.put(SNMEntityHandler.POOSTLE.get(), EntityPoostle.createAttributes());
@@ -84,6 +86,7 @@ public class SporeNMore {
     }
 
     private void clientSetup(FMLClientSetupEvent event) {
+        EntityRenderers.register(SNMEntityHandler.DEVOURER.get(), DevourerRenderer::new);
         EntityRenderers.register(SNMEntityHandler.THE_CRUNCH.get(), makeRenderer(new ModelCrunch()));
         EntityRenderers.register(SNMEntityHandler.LE_GIANTE.get(), makeRenderer(new ModelGiant()));
         EntityRenderers.register(SNMEntityHandler.POOSTLE.get(), makeRenderer(new ModelPoostle()));
@@ -130,6 +133,7 @@ public class SporeNMore {
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
+            EntityRenderers.register(SNMEntityHandler.DEVOURER.get(), DevourerRenderer::new);
             EntityRenderers.register(SNMEntityHandler.THE_CRUNCH.get(), makeRenderer(new ModelCrunch()));
             EntityRenderers.register(SNMEntityHandler.CAVE_FOX.get(), makeRenderer(new ModelCaveFox()));
             EntityRenderers.register(SNMEntityHandler.LE_GIANTE.get(), makeRenderer(new ModelGiant()));

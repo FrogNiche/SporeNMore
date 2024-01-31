@@ -24,6 +24,10 @@ public class SNMBlockHandler {
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
                     .strength(9f).noOcclusion()));
 
+    public static final RegistryObject<Block> BLOCK_OF_TEETH = registerBlock("block_of_teeth",
+            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+                    .strength(9f).noOcclusion()));
+
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

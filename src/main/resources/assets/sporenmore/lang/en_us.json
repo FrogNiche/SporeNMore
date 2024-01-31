@@ -7,10 +7,12 @@
   "entity.sporenmore.devourer": "The Devourer",
   "item.sporenmore.logo": "Spore N' More",
   "item.sporenmore.fur": "Fur",
+  "item.sporenmore.skirt": "The Crunch's Skirt",
   "item.sporenmore.tooth_dagger": "Tooth Dagger",
   "item.sporenmore.tooth": "Tooth",
   "item.sporenmore.bone_hammer": "Bone Hammer",
   "item.sporenmore.tooth_hammer": "Tooth Hammer",
+  "item.sporenmore.tooth_dust": "Tooth Dust",
   "item.sporenmore.furry_hoodie": "Fox Hoodie",
   "item.sporenmore.belt": "Belt",
   "block.sporenmore.pillow": "Pillow",
@@ -20,8 +22,11 @@
   "item.sporenmore.flying_spore_fox": "Flying Spored Fox Spawn Egg",
   "item.sporenmore.giant_spawn_egg": "Lé Giante Spawn Egg",
   "item.sporenmore.cave_fox_spawn_egg": "Cave Fox Spawn Egg",
+  "item.sporenmore.devourer_spawn_egg": "The Devourer Spawn Egg",
+  "item.sporenmore.flying_spore_fox_spawn_egg": "No name Spawn Egg",
 
   "block.sporenmore.block_of_fur": "Block Of Fur",
+  "block.sporenmore.block_of_teeth": "Block of Teeth",
 
   "creativemodetab.spore_n_more": "Spore N' More",
 

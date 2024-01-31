@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "sporenmore:tooth"
+    }
+  ],
+  "result": {
+    "item": "sporenmore:tooth_dust"
+  }
+}

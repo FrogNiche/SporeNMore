@@ -1,6 +1,18 @@
 {
-	"parent": "item/generated",
-	"textures": {
-		"layer0": "sporenmore:item/bone_hammer_icon"
+	"parent": "minecraft:item/handheld",
+	"loader": "forge:separate_transforms",
+	"base": {
+		"parent": "sporenmore:item/bone_hammer_in_hand"
+	},
+	"perspectives": {
+		"gui": {
+			"parent": "sporenmore:item/bone_hammer_2d"
+		},
+		"ground": {
+			"parent": "sporenmore:item/bone_hammer_2d"
+		},
+		"fixed": {
+			"parent": "sporenmore:item/bone_hammer_2d"
+		}
 	}
 }

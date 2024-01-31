@@ -51,6 +51,10 @@ public static final RegistryObject<Item> FUR = ITEMS.register("fur",
     public static final RegistryObject<Item> LOGO = ITEMS.register("logo",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
+    public static final RegistryObject<Item> TOOTH_DUST = ITEMS.register("tooth_dust",
+            () -> new Item(new Item.Properties()));
+
+
     public static final RegistryObject<Item> TOOTH = ITEMS.register("tooth",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
@@ -59,7 +63,7 @@ public static final RegistryObject<Item> FUR = ITEMS.register("fur",
             () -> new ItemToothFangDagger(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<ItemBoneHammer> BONE_HAMMER = ITEMS.register("bone_hammer",
-            () -> new ItemBoneHammer(new Item.Properties().rarity(Rarity.EPIC)));
+            () -> new ItemBoneHammer(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1)));
 
 
     public static final RegistryObject<BundleItem> FUR_BUNDLE = ITEMS.register("fur_bundle",

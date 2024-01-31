@@ -117,6 +117,7 @@ public class SporeNMore {
             event.accept(SNMItemHandler.FURRY_HOODIE);
             event.accept(SNMItemHandler.SKIRT); */
             event.accept(SNMItemHandler.TOOTH);
+            event.accept(SNMItemHandler.TOOTH_DUST);
             event.accept(SNMItemHandler.TOOTH_DAGGER);
             event.accept(SNMItemHandler.BONE_HAMMER);
             event.accept(SNMItemHandler.SKIRT);
@@ -127,7 +128,7 @@ public class SporeNMore {
           //  event.accept(SNMItemHandler.BULDGING_SPORE_FOX_SPAWN_EGG);
            event.accept(SNMItemHandler.FLYING_SPORED_FOX_SPAWN_EGG);
 
-          //  event.accept(SNMBlockHandler.BLOCK_OF_FUR);
+       event.accept(SNMBlockHandler.BLOCK_OF_TEETH);
         }
     }
 

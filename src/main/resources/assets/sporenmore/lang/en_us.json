@@ -5,8 +5,12 @@
   "entity.sporenmore.buldging_spore_fox": "Bulging Spore Fox",
   "entity.sporenmore.cave_fox": "Cave Fox",
   "entity.sporenmore.devourer": "The Devourer",
-
+  "item.sporenmore.logo": "Spore N' More",
   "item.sporenmore.fur": "Fur",
+  "item.sporenmore.tooth_dagger": "Tooth Dagger",
+  "item.sporenmore.tooth": "Tooth",
+  "item.sporenmore.bone_hammer": "Bone Hammer",
+  "item.sporenmore.tooth_hammer": "Tooth Hammer",
   "item.sporenmore.furry_hoodie": "Fox Hoodie",
   "item.sporenmore.belt": "Belt",
   "block.sporenmore.pillow": "Pillow",
@@ -19,6 +23,11 @@
 
   "block.sporenmore.block_of_fur": "Block Of Fur",
 
-  "creativemodetab.spore_n_more": "Spore N' More"
+  "creativemodetab.spore_n_more": "Spore N' More",
+
+
+  "advancements.sporenmore.kill_the_crunch.title": "You monster!",
+
+  "advancements.sporenmore.kill_the_crunch.description": "Kill The Crunch"
 
 }

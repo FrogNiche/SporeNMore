@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "sporenmore:item/belt_icon"
+    "layer0": "sporenmore:item/logo"
   }
 }

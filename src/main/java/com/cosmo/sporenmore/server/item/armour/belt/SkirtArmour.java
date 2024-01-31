@@ -19,21 +19,21 @@ import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.function.Consumer;
 
-public class BeltArmour extends ArmorItem implements GeoItem {
+public class SkirtArmour extends ArmorItem implements GeoItem {
 
     protected AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
-    public BeltArmour(ArmorMaterial p_40386_, Type p_266831_, Properties p_40388_) {
+    public SkirtArmour(ArmorMaterial p_40386_, Type p_266831_, Properties p_40388_) {
         super(p_40386_, p_266831_, p_40388_);
     }
 
     @Override
     public void initializeClient(Consumer<IClientItemExtensions> consumer) {
         consumer.accept(new IClientItemExtensions() {
-            private BeltArmourRenderer renderer;
+            private SkirtArmourRenderer renderer;
             @Override
             public @NotNull HumanoidModel<?> getHumanoidArmorModel(LivingEntity livingEntity, ItemStack itemStack, EquipmentSlot equipmentSlot, HumanoidModel<?> original) {
                if (this.renderer == null){
-                   this.renderer = new BeltArmourRenderer();
+                   this.renderer = new SkirtArmourRenderer();
                }
                this.renderer.prepForRender(livingEntity, itemStack, equipmentSlot, original);
                return this.renderer;
@@ -41,8 +41,8 @@ public class BeltArmour extends ArmorItem implements GeoItem {
         });
     }
 
-    private PlayState predicate(AnimationState<BeltArmour> event){
-        event.getController().setAnimation(RawAnimation.begin().thenLoop("animation.belt.new"));
+    private PlayState predicate(AnimationState<SkirtArmour> event){
+        event.getController().setAnimation(RawAnimation.begin().thenLoop("animation.skirt.new"));
         return PlayState.CONTINUE;
     }
 

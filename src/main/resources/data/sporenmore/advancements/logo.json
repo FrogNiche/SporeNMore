@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "sporenmore:logo"
+    },
+    "title": "A secret item...",
+    "description": "It is impossible to get it...I guess",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true
+  },
+  "parent": "sporenmore:sporenmore",
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sporenmore:logo"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

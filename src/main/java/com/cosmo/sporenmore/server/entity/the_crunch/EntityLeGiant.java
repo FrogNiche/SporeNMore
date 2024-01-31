@@ -9,10 +9,7 @@ import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
-import net.minecraft.world.entity.ai.goal.AvoidEntityGoal;
-import net.minecraft.world.entity.ai.goal.LookAtPlayerGoal;
-import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
-import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
+import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.player.Player;
@@ -33,7 +30,7 @@ public class EntityLeGiant extends Animal implements GeoEntity {
         super(p_27557_, p_27558_);
     }
     public static final AttributeSupplier createAttributes(){
-        return Animal.createMobAttributes().add(Attributes.MAX_HEALTH, 10)
+        return Animal.createMobAttributes().add(Attributes.MAX_HEALTH, 15)
                 .add(Attributes.MOVEMENT_SPEED, 0.6d)
                 .add(Attributes.MOVEMENT_SPEED, 0.25d)
                 .add(Attributes.ARMOR, 5d).build();
@@ -56,6 +53,8 @@ public class EntityLeGiant extends Animal implements GeoEntity {
 
         });
         this.targetSelector.addGoal(6, (new HurtByTargetGoal(this)).setAlertOthers());
+
+        this.goalSelector.addGoal(1, new PanicGoal(this, 2.0D));
         this.goalSelector.addGoal(10, new RandomStrollGoal(this, 0.7d){
 
         });
@@ -75,7 +74,7 @@ public class EntityLeGiant extends Animal implements GeoEntity {
     private PlayState predicate(AnimationState<EntityLeGiant> entityLeGiantAnimationState) {
 
         if (entityLeGiantAnimationState.isMoving()) {
-            entityLeGiantAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_le_giant.walk", Animation.LoopType.LOOP));
+            entityLeGiantAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_le_giant.run", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         } else {
             entityLeGiantAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.entity_le_giant.idle", Animation.LoopType.LOOP));
@@ -106,7 +105,7 @@ public class EntityLeGiant extends Animal implements GeoEntity {
     }
 
     protected float getSoundVolume() {
-        return 0.2F;
+        return 0.10F;
     }
 
 }

@@ -1,0 +1,25 @@
+{
+  "display": {
+    "icon": {
+      "item": "sporenmore:skirt"
+    },
+    "title": {
+      "translate": "advancements.sporenmore.kill_the_crunch.title"
+    },
+    "description": {
+      "translate": "advancements.sporenmore.kill_the_crunch.description"
+    },
+    "frame": "challenge"
+  },
+  "parent": "sporenmore:sporenmore",
+  "criteria": {
+    "the_crunch": {
+      "trigger": "minecraft:player_killed_entity",
+      "conditions": {
+        "entity": {
+          "type": "sporenmore:the_crunch"
+        }
+      }
+    }
+  }
+}

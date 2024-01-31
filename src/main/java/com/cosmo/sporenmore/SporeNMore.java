@@ -1,6 +1,7 @@
 package com.cosmo.sporenmore;
 
 import com.cosmo.sporenmore.client.models.entity.*;
+import com.cosmo.sporenmore.client.sound.SNMSoundHandler;
 import com.cosmo.sporenmore.server.block.block.SNMBlockHandler;
 import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityCaveFox;
@@ -54,6 +55,7 @@ public class SporeNMore {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
         GeckoLib.initialize();
         SNMItemHandler.register(modEventBus);
+        SNMSoundHandler.register(modEventBus);
         SNMBlockHandler.register(modEventBus);
         SNMEntityHandler.SNM_ENTITY.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
@@ -113,12 +115,17 @@ public class SporeNMore {
           /*  event.accept(SNMItemHandler.FUR);
             event.accept(SNMItemHandler.FUR_BUNDLE);
             event.accept(SNMItemHandler.FURRY_HOODIE);
-            event.accept(SNMItemHandler.BELT); */
+            event.accept(SNMItemHandler.SKIRT); */
+            event.accept(SNMItemHandler.TOOTH);
+            event.accept(SNMItemHandler.TOOTH_DAGGER);
+            event.accept(SNMItemHandler.BONE_HAMMER);
+            event.accept(SNMItemHandler.SKIRT);
             event.accept(SNMItemHandler.CRUNCH_SPAWN_EGG);
             event.accept(SNMItemHandler.GIANT_SPAWN_EGG);
+            event.accept(SNMItemHandler.DEVOURER_SPAWN_EGG);
          //   event.accept(SNMItemHandler.CAVE_FOX_SPAWN_EGG);
           //  event.accept(SNMItemHandler.BULDGING_SPORE_FOX_SPAWN_EGG);
-        //    event.accept(SNMItemHandler.FLYING_SPORED_FOX_SPAWN_EGG);
+           event.accept(SNMItemHandler.FLYING_SPORED_FOX_SPAWN_EGG);
 
           //  event.accept(SNMBlockHandler.BLOCK_OF_FUR);
         }

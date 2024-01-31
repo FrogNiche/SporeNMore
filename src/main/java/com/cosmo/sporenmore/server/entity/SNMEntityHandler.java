@@ -26,7 +26,7 @@ public class SNMEntityHandler {
             MobCategory.MONSTER).sized(2f, 7f));
 
     public static final RegistryObject<EntityType<EntityCrunch>> THE_CRUNCH = register("the_crunch", EntityType.Builder.of(EntityCrunch::new,
-            MobCategory.MONSTER));
+            MobCategory.MONSTER).sized(4f, 10f));
 
     public static final RegistryObject<EntityType<EntityLeGiant>> LE_GIANTE = register("le_giante", EntityType.Builder.of(EntityLeGiant::new,
             MobCategory.CREATURE));

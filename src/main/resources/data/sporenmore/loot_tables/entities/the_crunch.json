@@ -1,0 +1,20 @@
+{
+  "pools": [
+    {
+      "name": "the_crunch",
+      "rolls": 1,
+      "conditions": [
+        {
+          "condition": "killed_by_player"
+        }
+      ],
+      "entries": [
+        {
+          "type": "item",
+          "name": "sporenmore:skirt",
+          "weight": 1
+        }
+      ]
+    }
+  ]
+}

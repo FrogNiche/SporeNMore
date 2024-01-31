@@ -46,7 +46,7 @@ public class EntityDevourer extends Monster implements GeoEntity, RoarEntity {
 
     public AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     protected static final RawAnimation ROAR_ANIM = RawAnimation.begin().then
-            ("animation.devourer.rocket_pustule",
+            ("animation.devourer.roar",
             Animation.LoopType.PLAY_ONCE);
 
 
@@ -105,6 +105,11 @@ public class EntityDevourer extends Monster implements GeoEntity, RoarEntity {
             this.entityData.set(VOMIT_ANIMATION, true);
             //this should correspond to the animation length in ticks
             this.explodingCooldown = 4 * 20;
+        }
+        if (!this.entityData.get(EXPLODING) && this.vomitCooldown <= 0 && this.random.nextInt(20) == 0) {
+            this.entityData.set(EXPLODING, true);
+            //this should correspond to the animation length in ticks
+            this.explodingCooldown = 2 * 20;
         }
         return false;
     }
@@ -208,6 +213,7 @@ public class EntityDevourer extends Monster implements GeoEntity, RoarEntity {
         this.goalSelector.addGoal(0, new FloatGoal(this));
         this.goalSelector.addGoal(1, new RoarGoal<>(this));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 0.6f, true));
+        this.goalSelector.addGoal(3, new NearestAttackableTargetGoal(this, Monster.class, true));
         this.goalSelector.addGoal(1, new MeleeAttackGoal(this, 0.6f, true) {
 
 
@@ -304,8 +310,7 @@ public class EntityDevourer extends Monster implements GeoEntity, RoarEntity {
                 event.getController().forceAnimationReset();
                 event.getController().setAnimation(RawAnimation.begin().then(
                         "animation.devourer.pustule_spew",
-                        Animation.LoopType.PLAY_ONCE));
-
+                        Animation.LoopType.HOLD_ON_LAST_FRAME));
 
 
 
@@ -314,7 +319,7 @@ public class EntityDevourer extends Monster implements GeoEntity, RoarEntity {
                 event.getController().forceAnimationReset();
                 event.getController().setAnimation(RawAnimation.begin().then(
                         "animation.devourer.vomiting",
-                        Animation.LoopType.PLAY_ONCE));
+                        Animation.LoopType.HOLD_ON_LAST_FRAME));
 
 
 
@@ -345,7 +350,7 @@ public class EntityDevourer extends Monster implements GeoEntity, RoarEntity {
             return PlayState.CONTINUE;
         }
         if (entityData.get(ROAR)) {
-            devourerEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.devourer.rocket_pustule",
+            devourerEntityAnimationState.getController().setAnimation(RawAnimation.begin().then("animation.devourer.roar",
                     Animation.LoopType.PLAY_ONCE));
             return PlayState.CONTINUE;
 
@@ -386,29 +391,6 @@ public class EntityDevourer extends Monster implements GeoEntity, RoarEntity {
         }
     }
 // dont you ever worry about da cavities in ur teeth. AND MAKE THE MOST OV ITTT!
-
-  /*  protected SoundEvent getAmbientSound() {
-        int i = Mth.nextInt(random, 0, ModSounds.DEVOURER_IDLE.size());
-        if (i < ModSounds.DEVOURER_IDLE.size()) {
-            return ModSounds.DEVOURER_IDLE.get(i).get();
-        }
-        return null;
-    }
-
-    protected SoundEvent getHurtSound(DamageSource damageSourceIn) {
-        int i = Mth.nextInt(random, 0, ModSounds.DEVOURER_HURT.size());
-        if (i < ModSounds.DEVOURER_HURT.size()) {
-            return ModSounds.DEVOURER_HURT.get(i).get();
-        }
-        return null;
-    }
-    protected SoundEvent getDeathSound() {
-        return ModSounds.DEVOURER_HURT5.get();
-    }
-    protected float getSoundVolume() {
-        return 0.2F;
-    }
-*/
 
     @Override
     public boolean canRoar() {

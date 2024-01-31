@@ -1,0 +1,27 @@
+{
+  "display": {
+    "icon": {
+      "item": "sporenmore:logo"
+    },
+    "title": "Spore N' More",
+    "description": "Welcome to the Spore N' More!",
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "background": "minecraft:textures/block/orange_wool.png"
+  },
+  "criteria": {
+    "requirement": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "sporenmore:logo"
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

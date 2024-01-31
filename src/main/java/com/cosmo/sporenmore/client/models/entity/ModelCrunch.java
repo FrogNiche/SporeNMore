@@ -13,11 +13,12 @@ public class ModelCrunch extends GeoModel<EntityCrunch> {
 
     @Override
     public ResourceLocation getTextureResource(EntityCrunch object) {
-        return SporeNMore.modLoc("textures/entity/tex_crunch.png");
+        return object.getTextureType().getTexture();
     }
 
     @Override
     public ResourceLocation getAnimationResource(EntityCrunch animatable) {
         return SporeNMore.modLoc("animations/entity/entity_the_crunch.animation.json");
     }
+
 }

@@ -26,4 +26,5 @@ public class CrunchRenderer extends MobRenderer<CrunchEntity, CrunchModel<Crunch
 
         super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
     }
+    // Here for the name tag
 }

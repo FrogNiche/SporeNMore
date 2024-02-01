@@ -21,7 +21,7 @@ public class SNMItemHandler {
 
     // Spawn Eggs
     public static final RegistryObject<Item> CRUNCH_SPAWN_EGG = ITEMS.register("the_crunch_spawn_egg",
-            () -> new ForgeSpawnEggItem(SNMEntityHandler.THE_CRUNCH, 0xb05122, 0xcc6920,
+            () -> new ForgeSpawnEggItem(SNMEntityHandler.CRUNCH, 0xb05122, 0xcc6920,
                     new Item.Properties()));
 
     public static final RegistryObject<Item> GIANT_SPAWN_EGG = ITEMS.register("giant_spawn_egg",

@@ -1,6 +1,4 @@
-package com.cosmo.sporenmore.server.entity.client;// Made with Blockbench 4.9.3
-// Exported for Minecraft version 1.17 or later with Mojang mappings
-// Paste this class into your mod and generate all required imports
+package com.cosmo.sporenmore.server.entity.client;
 
 
 import com.cosmo.sporenmore.server.entity.animations.CrunchModelAnimation;
@@ -71,7 +69,7 @@ public class CrunchModel<T extends Entity> extends HierarchicalModel<T> {
 
 		this.animateWalk(CrunchModelAnimation.CRUNCH_WALK_ANIM, limbSwing, limbSwingAmount, 2f, 2.5f);
 		this.animate(((CrunchEntity) entity).idleAnimationState, CrunchModelAnimation.CRUNCH_IDLE_ANIM, ageInTicks, 1f);
-		this.animate(((CrunchEntity) entity).idleAnimationState, CrunchModelAnimation.CRUNCH_ATTACK_ANIM, ageInTicks, 1f);
+		this.animate(((CrunchEntity) entity).attackAnimationState, CrunchModelAnimation.CRUNCH_ATTACK_ANIM, ageInTicks, 1f);
 	}
 	private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {
 		pNetHeadYaw = Mth.clamp(pNetHeadYaw, -30.0F, 30.0F);

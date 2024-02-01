@@ -42,9 +42,9 @@ public class CrunchEntity extends Animal {
     public void tick() {
         super.tick();
 
-        if(this.level().isClientSide()) {
+       /* if(this.level().isClientSide()) {
             setupAnimationStates();
-        }
+        } */
     }
 
     private void setupAnimationStates() {

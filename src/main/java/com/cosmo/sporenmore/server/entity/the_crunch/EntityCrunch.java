@@ -197,7 +197,7 @@ public class EntityCrunch extends Monster implements GeoEntity {
     public static enum Type {
         NORMAL(SporeNMore.modLoc("textures/entity/tex_crunch.png")),
 
-        WARPED(SporeNMore.modLoc("textures/entity/crunch_spore.png")),
+        WARPED(SporeNMore.modLoc("textures/entity/spore_crunch.png")),
         ;
 
         private final ResourceLocation texture;

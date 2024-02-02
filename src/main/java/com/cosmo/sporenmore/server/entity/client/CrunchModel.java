@@ -1,10 +1,12 @@
 package com.cosmo.sporenmore.server.entity.client;
 
 
+import com.cosmo.sporenmore.SporeNMore;
 import com.cosmo.sporenmore.server.entity.animations.CrunchModelAnimation;
 import com.cosmo.sporenmore.server.entity.examples.CrunchEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
@@ -14,8 +16,10 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.animal.Rabbit;
 
 public class CrunchModel<T extends Entity> extends HierarchicalModel<T> {
+
 
 	// This layer location should be baked with EntityRendererProvider.Context in the entity renderer and passed into this model's constructor
 	public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(new ResourceLocation("sporenmore", "crunchmodel"), "main");

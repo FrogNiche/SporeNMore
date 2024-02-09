@@ -2,7 +2,6 @@ package com.cosmo.sporenmore.client.models.entity;
 
 import com.cosmo.sporenmore.SporeNMore;
 import com.cosmo.sporenmore.server.entity.spore_mobs.EntityBuldgingSporeFox;
-import com.cosmo.sporenmore.server.entity.the_crunch.EntityCrunch;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
 

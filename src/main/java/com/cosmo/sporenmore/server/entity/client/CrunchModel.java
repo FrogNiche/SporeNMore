@@ -1,13 +1,10 @@
 package com.cosmo.sporenmore.server.entity.client;
 
 
-import com.cosmo.sporenmore.SporeNMore;
-import com.cosmo.sporenmore.server.entity.animations.CrunchModelAnimation;
+import com.cosmo.sporenmore.server.entity.animations.CrunchAnimations;
 import com.cosmo.sporenmore.server.entity.examples.CrunchEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import net.minecraft.ChatFormatting;
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.client.model.HierarchicalModel;
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelPart;
@@ -16,7 +13,6 @@ import net.minecraft.client.model.geom.builders.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.animal.Rabbit;
 
 public class CrunchModel<T extends Entity> extends HierarchicalModel<T> {
 
@@ -71,9 +67,10 @@ public class CrunchModel<T extends Entity> extends HierarchicalModel<T> {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 		this.applyHeadRotation(netHeadYaw, headPitch, ageInTicks);
 
-		this.animateWalk(CrunchModelAnimation.CRUNCH_WALK_ANIM, limbSwing, limbSwingAmount, 2f, 2.5f);
-		this.animate(((CrunchEntity) entity).idleAnimationState, CrunchModelAnimation.CRUNCH_IDLE_ANIM, ageInTicks, 1f);
-		this.animate(((CrunchEntity) entity).attackAnimationState, CrunchModelAnimation.CRUNCH_ATTACK_ANIM, ageInTicks, 1f);
+		this.animateWalk(CrunchAnimations.CRUNCH_WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
+		this.animate(((CrunchEntity) entity).idleAnimationState, CrunchAnimations.CRUNCH_IDLE, ageInTicks, 1f);
+		this.animate(((CrunchEntity) entity).attackAnimationState, CrunchAnimations.CRUNCH_STOMP, ageInTicks, 1f);
+
 	}
 	private void applyHeadRotation(float pNetHeadYaw, float pHeadPitch, float pAgeInTicks) {
 		pNetHeadYaw = Mth.clamp(pNetHeadYaw, -30.0F, 30.0F);

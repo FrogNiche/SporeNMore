@@ -8,13 +8,11 @@ import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityTallFox;
 import com.cosmo.sporenmore.server.entity.spore_mobs.EntityBuldgingSporeFox;
 import com.cosmo.sporenmore.server.entity.spore_mobs.EntityPoostle;
 import com.cosmo.sporenmore.server.entity.spore_mobs.devourer.EntityDevourer;
-import com.cosmo.sporenmore.server.entity.the_crunch.EntityCrunch;
 import com.cosmo.sporenmore.server.entity.the_crunch.EntityLeGiant;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 import static net.minecraftforge.registries.ForgeRegistries.ENTITY_TYPES;
@@ -30,8 +28,6 @@ public class SNMEntityHandler {
     public static final RegistryObject<EntityType<EntityDevourer>> DEVOURER = register("devourer", EntityType.Builder.of(EntityDevourer::new,
             MobCategory.MONSTER).sized(2f, 7f));
 
-    public static final RegistryObject<EntityType<EntityCrunch>> THE_CRUNCH = register("the_crunch", EntityType.Builder.of(EntityCrunch::new,
-            MobCategory.MONSTER).sized(4f, 10f));
 
     public static final RegistryObject<EntityType<EntityLeGiant>> LE_GIANTE = register("le_giante", EntityType.Builder.of(EntityLeGiant::new,
             MobCategory.CREATURE));

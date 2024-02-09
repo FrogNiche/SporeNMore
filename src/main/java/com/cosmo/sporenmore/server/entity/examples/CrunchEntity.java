@@ -1,9 +1,12 @@
 package com.cosmo.sporenmore.server.entity.examples;
+import com.cosmo.sporenmore.SporeNMore;
 import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
 import com.cosmo.sporenmore.server.entity.ai.CrunchAttackGoal;
+import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -20,9 +23,31 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
+import software.bernie.geckolib.animatable.GeoEntity;
+
 public class CrunchEntity extends Animal {
     private static final EntityDataAccessor<Boolean> ATTACKING =
             SynchedEntityData.defineId(CrunchEntity.class, EntityDataSerializers.BOOLEAN);
+
+    private static final EntityDataAccessor<Boolean> STOMPING =
+            SynchedEntityData.defineId(CrunchEntity.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<Integer> TYPE = SynchedEntityData.defineId(CrunchEntity.class, EntityDataSerializers.INT);
+
+    @Override
+    public boolean doHurtTarget(Entity opfer) {
+        super.doHurtTarget(opfer);
+        if (!this.entityData.get(ATTACKING) && this.attackAnimationTimeout <= 0 && this.random.nextInt(10) == 0) {
+            this.entityData.set(ATTACKING, true);
+
+            this.attackAnimationTimeout = 4 * 160;
+        }
+        if (!this.entityData.get(STOMPING) && this.stompAnimationTimeout <= 0 && this.random.nextInt(20) == 0) {
+            this.entityData.set(STOMPING, true);
+
+            this.stompAnimationTimeout = 2 * 20;
+        }
+        return false;
+    }
 
     public CrunchEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
@@ -32,7 +57,12 @@ public class CrunchEntity extends Animal {
     private int idleAnimationTimeout = 0;
 
     public final AnimationState attackAnimationState = new AnimationState();
+
+    public final AnimationState stompAnimationState = new AnimationState();
     public int attackAnimationTimeout = 0;
+
+    public int stompAnimationTimeout = 0;
+
 
 
     @Override
@@ -53,15 +83,12 @@ public class CrunchEntity extends Animal {
         }
 
         if (this.isAttacking() && attackAnimationTimeout <= 0) {
-            attackAnimationTimeout = 30; // Length in ticks of your animation
+            attackAnimationTimeout = 20; // Length in ticks of your animation
             attackAnimationState.start(this.tickCount);
         } else {
             --this.attackAnimationTimeout;
         }
 
-        if (!this.isAttacking()) {
-            attackAnimationState.stop();
-        }
     }
 
     @Override
@@ -76,18 +103,55 @@ public class CrunchEntity extends Animal {
         this.walkAnimation.update(f, 0.2f);
     }
 
+
     public void setAttacking(boolean attacking) {
         this.entityData.set(ATTACKING, attacking);
     }
+
+
 
     public boolean isAttacking() {
         return this.entityData.get(ATTACKING);
     }
 
+
+
     @Override
     protected void defineSynchedData() {
         super.defineSynchedData();
         this.entityData.define(ATTACKING, false);
+
+        this.entityData.define(STOMPING, false);
+
+        this.entityData.define(TYPE, getInitialType().ordinal());
+    }
+
+    public void setTextureType(Type t) {
+        this.entityData.set(TYPE, t.ordinal());
+    }
+
+    public Type getTextureType() {
+        return Type.values()[entityData.get(TYPE)];
+    }
+
+    protected Type getInitialType() {
+        return Type.values()[this.random.nextInt(Type.values().length)];
+    }
+
+    public static enum Type {
+        NORMAL(SporeNMore.modLoc("textures/entity/tex_crunch.png")),
+        SNOW_CRUNCH(SporeNMore.modLoc("textures/entity/snow_crunch.png")),
+        SPORE_CRUNCH(SporeNMore.modLoc("textures/entity/spore_crunch.png"));
+
+        private final ResourceLocation texture;
+
+        Type(ResourceLocation texture) {
+            this.texture = texture;
+        }
+
+        public ResourceLocation getTexture() {
+            return texture;
+        }
     }
 
     @Override
@@ -146,5 +210,6 @@ public class CrunchEntity extends Animal {
     protected SoundEvent getDeathSound() {
         return SoundEvents.DOLPHIN_DEATH;
     }
+
 
 }

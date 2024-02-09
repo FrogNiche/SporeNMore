@@ -1,10 +1,12 @@
 package com.cosmo.sporenmore;
 
 import com.cosmo.sporenmore.client.models.entity.*;
+import com.cosmo.sporenmore.client.particle.SNMParticleTypes;
 import com.cosmo.sporenmore.client.sound.SNMSoundHandler;
 import com.cosmo.sporenmore.server.block.block.SNMBlockHandler;
 import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
 import com.cosmo.sporenmore.server.entity.client.CrunchRenderer;
+import com.cosmo.sporenmore.server.entity.examples.CrunchEntity;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityCaveFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityFatFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityTallFox;
@@ -12,13 +14,11 @@ import com.cosmo.sporenmore.server.entity.spore_mobs.EntityBuldgingSporeFox;
 import com.cosmo.sporenmore.server.entity.spore_mobs.EntityPoostle;
 import com.cosmo.sporenmore.server.entity.spore_mobs.devourer.DevourerRenderer;
 import com.cosmo.sporenmore.server.entity.spore_mobs.devourer.EntityDevourer;
-import com.cosmo.sporenmore.server.entity.the_crunch.EntityCrunch;
 import com.cosmo.sporenmore.server.entity.the_crunch.EntityLeGiant;
 import com.cosmo.sporenmore.server.item.SNMItemHandler;
 import com.cosmo.sporenmore.server.item.tab.SNMTab;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.resources.ResourceLocation;
@@ -60,6 +60,7 @@ public class SporeNMore {
         SNMBlockHandler.register(modEventBus);
         SNMEntityHandler.SNM_ENTITY.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
+        SNMParticleTypes.PARTICLE_TYPES.register(modEventBus);
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::registerEntityAttributes);
         modEventBus.addListener(this::clientSetup);
@@ -69,7 +70,6 @@ public class SporeNMore {
 
     private void registerEntityAttributes(EntityAttributeCreationEvent event) {
         event.put(SNMEntityHandler.DEVOURER.get(), EntityDevourer.makeAttributes());
-        event.put(SNMEntityHandler.THE_CRUNCH.get(), EntityCrunch.makeAttributes());
         event.put(SNMEntityHandler.LE_GIANTE.get(), EntityLeGiant.createAttributes());
         event.put(SNMEntityHandler.POOSTLE.get(), EntityPoostle.createAttributes());
         event.put(SNMEntityHandler.BULDGING_SPORE_FOX.get(), EntityBuldgingSporeFox.makeAttributes());
@@ -90,7 +90,8 @@ public class SporeNMore {
 
     private void clientSetup(FMLClientSetupEvent event) {
         EntityRenderers.register(SNMEntityHandler.DEVOURER.get(), DevourerRenderer::new);
-        EntityRenderers.register(SNMEntityHandler.THE_CRUNCH.get(), makeRenderer(new ModelCrunch()));
+        EntityRenderers.register(SNMEntityHandler.CRUNCH.get(), CrunchRenderer::new);
+      //  EntityRenderers.register(SNMEntityHandler.THE_CRUNCH.get(), makeRenderer(new ModelCrunch()));
         EntityRenderers.register(SNMEntityHandler.LE_GIANTE.get(), makeRenderer(new ModelGiant()));
         EntityRenderers.register(SNMEntityHandler.POOSTLE.get(), makeRenderer(new ModelPoostle()));
         EntityRenderers.register(SNMEntityHandler.BULDGING_SPORE_FOX.get(),
@@ -144,7 +145,7 @@ public class SporeNMore {
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(SNMEntityHandler.CRUNCH.get(), CrunchRenderer::new);
             EntityRenderers.register(SNMEntityHandler.DEVOURER.get(), DevourerRenderer::new);
-            EntityRenderers.register(SNMEntityHandler.THE_CRUNCH.get(), makeRenderer(new ModelCrunch()));
+         //   EntityRenderers.register(SNMEntityHandler.THE_CRUNCH.get(), makeRenderer(new ModelCrunch()));
             EntityRenderers.register(SNMEntityHandler.CAVE_FOX.get(), makeRenderer(new ModelCaveFox()));
             EntityRenderers.register(SNMEntityHandler.LE_GIANTE.get(), makeRenderer(new ModelGiant()));
             EntityRenderers.register(SNMEntityHandler.POOSTLE.get(), makeRenderer(new ModelPoostle()));

@@ -2,10 +2,14 @@ package com.cosmo.sporenmore.server.entity.client;
 import com.cosmo.sporenmore.SporeNMore;
 import com.cosmo.sporenmore.server.entity.examples.CrunchEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
+
+import static com.cosmo.sporenmore.server.entity.examples.CrunchEntity.Type.SNOW_CRUNCH;
+import static com.cosmo.sporenmore.server.entity.examples.CrunchEntity.Type.SPORE_CRUNCH;
 
 public class CrunchRenderer extends MobRenderer<CrunchEntity, CrunchModel<CrunchEntity>> {
     public CrunchRenderer(EntityRendererProvider.Context pContext) {
@@ -14,7 +18,11 @@ public class CrunchRenderer extends MobRenderer<CrunchEntity, CrunchModel<Crunch
 
     @Override
     public ResourceLocation getTextureLocation(CrunchEntity pEntity) {
-        return new ResourceLocation(SporeNMore.MOD_ID, "textures/entity/tex_crunch.png");
+        String s = ChatFormatting.stripFormatting(pEntity.getName().getString());
+        if ("Spore".equals(s)) {
+            return SPORE_CRUNCH.getTexture();
+        }
+        return pEntity.getTextureType().getTexture();
     }
 
     @Override
@@ -26,5 +34,4 @@ public class CrunchRenderer extends MobRenderer<CrunchEntity, CrunchModel<Crunch
 
         super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
     }
-    // Here for the name tag
 }

@@ -9,7 +9,7 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 public class CrunchAttackGoal extends MeleeAttackGoal {
     private final CrunchEntity entity;
     private int attackDelay = 10;
-    private int ticksUntilNextAttack = 10;
+    private int ticksUntilNextAttack = 20;
     private boolean shouldCountTillNextAttack = false;
 
     public CrunchAttackGoal(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
@@ -20,8 +20,8 @@ public class CrunchAttackGoal extends MeleeAttackGoal {
     @Override
     public void start() {
         super.start();
-        attackDelay = 5;
-        ticksUntilNextAttack = 5;
+        attackDelay = 10;
+        ticksUntilNextAttack = 20;
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.cosmo.sporenmore.server.entity.client;
 import com.cosmo.sporenmore.SporeNMore;
 import com.cosmo.sporenmore.server.entity.examples.CrunchEntity;
+import com.cosmo.sporenmore.server.entity.spore_mobs.devourer.EntityDevourer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -34,4 +35,5 @@ public class CrunchRenderer extends MobRenderer<CrunchEntity, CrunchModel<Crunch
 
         super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
     }
+
 }

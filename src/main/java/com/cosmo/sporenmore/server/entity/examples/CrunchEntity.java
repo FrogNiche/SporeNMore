@@ -2,21 +2,28 @@ package com.cosmo.sporenmore.server.entity.examples;
 import com.cosmo.sporenmore.SporeNMore;
 import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
 import com.cosmo.sporenmore.server.entity.ai.CrunchAttackGoal;
+import com.cosmo.sporenmore.server.entity.animations.CrunchAnimations;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
+import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -25,12 +32,22 @@ import net.minecraft.world.level.Level;
 import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoEntity;
 
-public class CrunchEntity extends Animal {
+public class CrunchEntity extends Monster {
+
+    protected ServerBossEvent bossBar = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(),
+
+            BossEvent.BossBarColor.WHITE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(false);
     private static final EntityDataAccessor<Boolean> ATTACKING =
             SynchedEntityData.defineId(CrunchEntity.class, EntityDataSerializers.BOOLEAN);
 
     private static final EntityDataAccessor<Boolean> STOMPING =
             SynchedEntityData.defineId(CrunchEntity.class, EntityDataSerializers.BOOLEAN);
+
+
+
+
+  /*  private static final EntityDataAccessor<Boolean> EAR_SCRATCHING =
+            SynchedEntityData.defineId(CrunchEntity.class, EntityDataSerializers.BOOLEAN); */
     public static final EntityDataAccessor<Integer> TYPE = SynchedEntityData.defineId(CrunchEntity.class, EntityDataSerializers.INT);
 
     @Override
@@ -46,10 +63,15 @@ public class CrunchEntity extends Animal {
 
             this.stompAnimationTimeout = 2 * 20;
         }
+      /*  if (!this.entityData.get(EAR_SCRATCHING) && this.TummyScratchingAnimationTimeout <= 8 && this.random.nextInt(5) == 0) {
+            this.entityData.set(EAR_SCRATCHING, true);
+
+            this.TummyScratchingAnimationTimeout = 8 * 40; */
+
         return false;
     }
 
-    public CrunchEntity(EntityType<? extends Animal> pEntityType, Level pLevel) {
+    public CrunchEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -58,13 +80,29 @@ public class CrunchEntity extends Animal {
 
     public final AnimationState attackAnimationState = new AnimationState();
 
-    public final AnimationState stompAnimationState = new AnimationState();
+
+    public final AnimationState deathAnimationState = new AnimationState();
+    public int deathAnimationTimeout = 0;
+    // public final AnimationState stompAnimationState = new AnimationState();
     public int attackAnimationTimeout = 0;
 
     public int stompAnimationTimeout = 0;
 
+    protected boolean dead;
+
+ //   public int TummyScratchingAnimationTimeout = 0;
 
 
+    @Override
+    public void tickDeath() {
+        ++this.deathTime;
+        if (!dead)
+            dead = true;
+        if (this.deathTime >= 20 * 16 && !this.level.isClientSide() && !this.isRemoved()) {
+            this.level.broadcastEntityEvent(this, (byte) 60);
+            this.remove(RemovalReason.KILLED);
+        }
+    }
     @Override
     public void tick() {
         super.tick();
@@ -72,6 +110,8 @@ public class CrunchEntity extends Animal {
         if (this.getLevel().isClientSide()) {
             setupAnimationStates();
         }
+            bossBar.setProgress(this.getHealth() / this.getMaxHealth());
+
     }
 
     private void setupAnimationStates() {
@@ -82,20 +122,21 @@ public class CrunchEntity extends Animal {
             --this.idleAnimationTimeout;
         }
 
+
+
         if (this.isAttacking() && attackAnimationTimeout <= 0) {
             attackAnimationTimeout = 20; // Length in ticks of your animation
             attackAnimationState.start(this.tickCount);
         } else {
             --this.attackAnimationTimeout;
         }
-
     }
 
     @Override
     protected void updateWalkAnimation(float pPartialTick) {
         float f;
         if (this.getPose() == Pose.STANDING) {
-            f = Math.min(pPartialTick * 6F, 1f);
+            f = Math.min(pPartialTick * 4F, 1f);
         } else {
             f = 0f;
         }
@@ -114,6 +155,8 @@ public class CrunchEntity extends Animal {
         return this.entityData.get(ATTACKING);
     }
 
+ 
+
 
 
     @Override
@@ -122,6 +165,8 @@ public class CrunchEntity extends Animal {
         this.entityData.define(ATTACKING, false);
 
         this.entityData.define(STOMPING, false);
+
+    //    this.entityData.define(EAR_SCRATCHING, false);
 
         this.entityData.define(TYPE, getInitialType().ordinal());
     }
@@ -160,15 +205,13 @@ public class CrunchEntity extends Animal {
 
         this.goalSelector.addGoal(1, new CrunchAttackGoal(this, 1.0D, true));
 
-        this.goalSelector.addGoal(1, new BreedGoal(this, 1.15D));
         this.goalSelector.addGoal(2, new TemptGoal(this, 1.2D, Ingredient.of(Items.COOKED_BEEF), false));
 
-        this.goalSelector.addGoal(3, new FollowParentGoal(this, 1.1D));
 
         this.goalSelector.addGoal(4, new WaterAvoidingRandomStrollGoal(this, 1.1D));
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 3f));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
-
+        this.goalSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Monster.class, true));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
     }
 
@@ -182,16 +225,6 @@ public class CrunchEntity extends Animal {
                 .add(Attributes.ATTACK_DAMAGE, 2f);
     }
 
-    @Nullable
-    @Override
-    public AgeableMob getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        return SNMEntityHandler.CRUNCH.get().create(pLevel);
-    }
-
-    @Override
-    public boolean isFood(ItemStack pStack) {
-        return pStack.is(Items.COOKED_BEEF);
-    }
 
     @Nullable
     @Override
@@ -211,5 +244,20 @@ public class CrunchEntity extends Animal {
         return SoundEvents.DOLPHIN_DEATH;
     }
 
+    @Override
+    public void startSeenByPlayer(ServerPlayer p31483) {
+        super.startSeenByPlayer(p31483);
+        this.bossBar.addPlayer(p31483);
+    }
 
+    @Override
+    public void stopSeenByPlayer(ServerPlayer p31488) {
+        super.stopSeenByPlayer(p31488);
+        this.bossBar.removePlayer(p31488);
+    }
+
+    public void setCustomName(@Nullable Component p31476) {
+        super.setCustomName(p31476);
+        this.bossBar.setName(this.getDisplayName());
+    }
 }

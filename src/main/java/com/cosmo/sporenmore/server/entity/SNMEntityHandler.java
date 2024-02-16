@@ -1,7 +1,8 @@
 package com.cosmo.sporenmore.server.entity;
 
 import com.cosmo.sporenmore.SporeNMore;
-import com.cosmo.sporenmore.server.entity.examples.CrunchEntity;
+import com.cosmo.sporenmore.server.entity.crunch_team.CrunchEntity;
+import com.cosmo.sporenmore.server.entity.crunch_team.EntityJetpackFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityCaveFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityFatFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityTallFox;
@@ -25,6 +26,11 @@ public class SNMEntityHandler {
     public static final RegistryObject<EntityType<CrunchEntity>> CRUNCH = register("crunch",
             EntityType.Builder.of(CrunchEntity::new,
             MobCategory.CREATURE).sized(3.50f, 5f));
+
+
+    public static final RegistryObject<EntityType<EntityJetpackFox>> JETPACK_FOX = register("jetpack_fox",
+            EntityType.Builder.of(EntityJetpackFox::new,
+                    MobCategory.CREATURE));
     public static final RegistryObject<EntityType<EntityDevourer>> DEVOURER = register("devourer", EntityType.Builder.of(EntityDevourer::new,
             MobCategory.MONSTER).sized(2f, 7f));
 

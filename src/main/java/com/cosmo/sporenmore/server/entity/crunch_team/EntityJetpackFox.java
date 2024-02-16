@@ -1,19 +1,20 @@
-package com.cosmo.sporenmore.server.entity.examples;
+package com.cosmo.sporenmore.server.entity.crunch_team;
+
 import com.cosmo.sporenmore.SporeNMore;
-import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
 import com.cosmo.sporenmore.server.entity.ai.CrunchAttackGoal;
-import com.cosmo.sporenmore.server.entity.animations.CrunchAnimations;
+import com.cosmo.sporenmore.server.entity.ai.JFAttackGoal;
 import net.minecraft.core.particles.ParticleOptions;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
-import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
@@ -25,53 +26,33 @@ import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.animal.Animal;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.animatable.GeoEntity;
 
-public class CrunchEntity extends Monster {
+public class EntityJetpackFox extends Monster {
+    public float targetStomp;
 
+    public float stomp;
+    public float oStomp;
+
+    private boolean wasOnGround;
     protected ServerBossEvent bossBar = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(),
 
             BossEvent.BossBarColor.WHITE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(false);
     private static final EntityDataAccessor<Boolean> ATTACKING =
-            SynchedEntityData.defineId(CrunchEntity.class, EntityDataSerializers.BOOLEAN);
-
-    private static final EntityDataAccessor<Boolean> STOMPING =
-            SynchedEntityData.defineId(CrunchEntity.class, EntityDataSerializers.BOOLEAN);
+            SynchedEntityData.defineId(EntityJetpackFox.class, EntityDataSerializers.BOOLEAN);
 
 
+    private static final EntityDataAccessor<Boolean> EAR_SCRATCHING =
+            SynchedEntityData.defineId(EntityJetpackFox.class, EntityDataSerializers.BOOLEAN);
+    public static final EntityDataAccessor<Integer> TYPE = SynchedEntityData.defineId(EntityJetpackFox.class, EntityDataSerializers.INT);
 
 
-  /*  private static final EntityDataAccessor<Boolean> EAR_SCRATCHING =
-            SynchedEntityData.defineId(CrunchEntity.class, EntityDataSerializers.BOOLEAN); */
-    public static final EntityDataAccessor<Integer> TYPE = SynchedEntityData.defineId(CrunchEntity.class, EntityDataSerializers.INT);
 
-    @Override
-    public boolean doHurtTarget(Entity opfer) {
-        super.doHurtTarget(opfer);
-        if (!this.entityData.get(ATTACKING) && this.attackAnimationTimeout <= 0 && this.random.nextInt(10) == 0) {
-            this.entityData.set(ATTACKING, true);
-
-            this.attackAnimationTimeout = 4 * 160;
-        }
-        if (!this.entityData.get(STOMPING) && this.stompAnimationTimeout <= 0 && this.random.nextInt(20) == 0) {
-            this.entityData.set(STOMPING, true);
-
-            this.stompAnimationTimeout = 2 * 20;
-        }
-      /*  if (!this.entityData.get(EAR_SCRATCHING) && this.TummyScratchingAnimationTimeout <= 8 && this.random.nextInt(5) == 0) {
-            this.entityData.set(EAR_SCRATCHING, true);
-
-            this.TummyScratchingAnimationTimeout = 8 * 40; */
-
-        return false;
-    }
-
-    public CrunchEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public EntityJetpackFox(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -81,55 +62,62 @@ public class CrunchEntity extends Monster {
     public final AnimationState attackAnimationState = new AnimationState();
 
 
-    public final AnimationState deathAnimationState = new AnimationState();
-    public int deathAnimationTimeout = 0;
-    // public final AnimationState stompAnimationState = new AnimationState();
     public int attackAnimationTimeout = 0;
 
-    public int stompAnimationTimeout = 0;
 
-    protected boolean dead;
-
- //   public int TummyScratchingAnimationTimeout = 0;
-
-
-    @Override
-    public void tickDeath() {
-        ++this.deathTime;
-        if (!dead)
-            dead = true;
-        if (this.deathTime >= 20 * 16 && !this.level.isClientSide() && !this.isRemoved()) {
-            this.level.broadcastEntityEvent(this, (byte) 60);
-            this.remove(RemovalReason.KILLED);
+    private float allowedHeightOffset = 0.5F;
+    private int nextHeightOffsetChangeTick;
+    protected void customServerAiStep() {
+        --this.nextHeightOffsetChangeTick;
+        if (this.nextHeightOffsetChangeTick <= 0) {
+            this.nextHeightOffsetChangeTick = 100;
+            this.allowedHeightOffset = (float)this.random.triangle(0.5D, 6.891D);
         }
+
+        LivingEntity livingentity = this.getTarget();
+        if (livingentity != null && livingentity.getEyeY() > this.getEyeY() + (double)this.allowedHeightOffset && this.canAttack(livingentity)) {
+            Vec3 vec3 = this.getDeltaMovement();
+            this.setDeltaMovement(this.getDeltaMovement().add(0.0D, ((double)0.3F - vec3.y) * (double)0.3F, 0.0D));
+            this.hasImpulse = true;
+        }
+
+        super.customServerAiStep();
     }
+
+
     @Override
     public void tick() {
-        super.tick();
-
         if (this.getLevel().isClientSide()) {
             setupAnimationStates();
         }
-            bossBar.setProgress(this.getHealth() / this.getMaxHealth());
+        bossBar.setProgress(this.getHealth() / this.getMaxHealth());
 
     }
 
+    protected ParticleOptions getParticleType() {
+        return ParticleTypes.CAMPFIRE_SIGNAL_SMOKE;
+    }
+    protected boolean spawnCustomParticles() { return false; }
     private void setupAnimationStates() {
         if (this.idleAnimationTimeout <= 0) {
             this.idleAnimationTimeout = this.random.nextInt(20) + 40;
             this.idleAnimationState.start(this.tickCount);
+            for(int i = 0; i < 2; ++i) {
+                this.level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, this.getRandomX(0.10D), this.getRandomY(), this.getRandomZ(0.5D), 0.0D, 0.0D, 0.0D);
+            }
         } else {
             --this.idleAnimationTimeout;
         }
 
 
-
         if (this.isAttacking() && attackAnimationTimeout <= 0) {
-            attackAnimationTimeout = 20; // Length in ticks of your animation
+            attackAnimationTimeout = 63; // Length in ticks of your animation
             attackAnimationState.start(this.tickCount);
+
         } else {
             --this.attackAnimationTimeout;
         }
+
     }
 
     @Override
@@ -164,46 +152,13 @@ public class CrunchEntity extends Monster {
         super.defineSynchedData();
         this.entityData.define(ATTACKING, false);
 
-        this.entityData.define(STOMPING, false);
-
-    //    this.entityData.define(EAR_SCRATCHING, false);
-
-        this.entityData.define(TYPE, getInitialType().ordinal());
-    }
-
-    public void setTextureType(Type t) {
-        this.entityData.set(TYPE, t.ordinal());
-    }
-
-    public Type getTextureType() {
-        return Type.values()[entityData.get(TYPE)];
-    }
-
-    protected Type getInitialType() {
-        return Type.values()[this.random.nextInt(Type.values().length)];
-    }
-
-    public static enum Type {
-        NORMAL(SporeNMore.modLoc("textures/entity/tex_crunch.png")),
-        SNOW_CRUNCH(SporeNMore.modLoc("textures/entity/snow_crunch.png")),
-        SPORE_CRUNCH(SporeNMore.modLoc("textures/entity/spore_crunch.png"));
-
-        private final ResourceLocation texture;
-
-        Type(ResourceLocation texture) {
-            this.texture = texture;
-        }
-
-        public ResourceLocation getTexture() {
-            return texture;
-        }
     }
 
     @Override
     protected void registerGoals() {
         this.goalSelector.addGoal(0, new FloatGoal(this));
 
-        this.goalSelector.addGoal(1, new CrunchAttackGoal(this, 1.0D, true));
+        this.goalSelector.addGoal(1, new JFAttackGoal(this, 1.0D, true));
 
         this.goalSelector.addGoal(2, new TemptGoal(this, 1.2D, Ingredient.of(Items.COOKED_BEEF), false));
 

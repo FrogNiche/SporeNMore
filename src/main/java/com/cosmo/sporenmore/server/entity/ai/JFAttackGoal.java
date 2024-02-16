@@ -1,20 +1,20 @@
 package com.cosmo.sporenmore.server.entity.ai;
 
-import com.cosmo.sporenmore.server.entity.crunch_team.CrunchEntity;
+import com.cosmo.sporenmore.server.entity.crunch_team.EntityJetpackFox;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 
-public class CrunchAttackGoal extends MeleeAttackGoal {
-    private final CrunchEntity entity;
-    private int attackDelay = 10;
-    private int ticksUntilNextAttack = 20;
+public class JFAttackGoal extends MeleeAttackGoal {
+    private final EntityJetpackFox entity;
+    private int attackDelay = 65;
+    private int ticksUntilNextAttack = 200;
     private boolean shouldCountTillNextAttack = false;
 
-    public CrunchAttackGoal(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
+    public JFAttackGoal(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
         super(pMob, pSpeedModifier, pFollowingTargetEvenIfNotSeen);
-        entity = ((CrunchEntity) pMob);
+        entity = ((EntityJetpackFox) pMob);
     }
 
     @Override

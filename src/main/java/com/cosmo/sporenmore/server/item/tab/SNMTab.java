@@ -17,7 +17,7 @@ public class SNMTab {
     @SubscribeEvent
     public static void registerCreativeModeTabs(CreativeModeTabEvent.Register event) {
         SPORE_N_MORE = event.registerCreativeModeTab(new ResourceLocation(SporeNMore.MOD_ID, "spore_n_more"),
-                builder -> builder.icon(() -> new ItemStack(SNMItemHandler.FUR.get()))
+                builder -> builder.icon(() -> new ItemStack(SNMItemHandler.BONE_HAMMER.get()))
                         .title(Component.translatable("creativemodetab.spore_n_more")));
     }
 }

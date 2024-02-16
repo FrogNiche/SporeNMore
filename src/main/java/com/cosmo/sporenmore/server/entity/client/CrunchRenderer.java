@@ -1,7 +1,5 @@
 package com.cosmo.sporenmore.server.entity.client;
-import com.cosmo.sporenmore.SporeNMore;
-import com.cosmo.sporenmore.server.entity.examples.CrunchEntity;
-import com.cosmo.sporenmore.server.entity.spore_mobs.devourer.EntityDevourer;
+import com.cosmo.sporenmore.server.entity.crunch_team.CrunchEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -9,8 +7,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
 import net.minecraft.resources.ResourceLocation;
 
-import static com.cosmo.sporenmore.server.entity.examples.CrunchEntity.Type.SNOW_CRUNCH;
-import static com.cosmo.sporenmore.server.entity.examples.CrunchEntity.Type.SPORE_CRUNCH;
+import static com.cosmo.sporenmore.server.entity.crunch_team.CrunchEntity.Type.SPORE_CRUNCH;
 
 public class CrunchRenderer extends MobRenderer<CrunchEntity, CrunchModel<CrunchEntity>> {
     public CrunchRenderer(EntityRendererProvider.Context pContext) {

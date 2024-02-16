@@ -33,15 +33,7 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.Nullable;
 
 public class EntityJetpackFox extends Monster {
-    public float targetStomp;
 
-    public float stomp;
-    public float oStomp;
-
-    private boolean wasOnGround;
-    protected ServerBossEvent bossBar = (ServerBossEvent) new ServerBossEvent(this.getDisplayName(),
-
-            BossEvent.BossBarColor.WHITE, BossEvent.BossBarOverlay.PROGRESS).setDarkenScreen(false);
     private static final EntityDataAccessor<Boolean> ATTACKING =
             SynchedEntityData.defineId(EntityJetpackFox.class, EntityDataSerializers.BOOLEAN);
 
@@ -90,7 +82,7 @@ public class EntityJetpackFox extends Monster {
         if (this.getLevel().isClientSide()) {
             setupAnimationStates();
         }
-        bossBar.setProgress(this.getHealth() / this.getMaxHealth());
+
 
     }
 
@@ -199,20 +191,4 @@ public class EntityJetpackFox extends Monster {
         return SoundEvents.DOLPHIN_DEATH;
     }
 
-    @Override
-    public void startSeenByPlayer(ServerPlayer p31483) {
-        super.startSeenByPlayer(p31483);
-        this.bossBar.addPlayer(p31483);
-    }
-
-    @Override
-    public void stopSeenByPlayer(ServerPlayer p31488) {
-        super.stopSeenByPlayer(p31488);
-        this.bossBar.removePlayer(p31488);
-    }
-
-    public void setCustomName(@Nullable Component p31476) {
-        super.setCustomName(p31476);
-        this.bossBar.setName(this.getDisplayName());
-    }
 }

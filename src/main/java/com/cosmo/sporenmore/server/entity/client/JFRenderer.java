@@ -21,6 +21,7 @@ public class JFRenderer extends MobRenderer<EntityJetpackFox, JFModel<EntityJetp
     public void render(EntityJetpackFox pEntity, float pEntityYaw, float pPartialTicks, PoseStack pMatrixStack,
                        MultiBufferSource pBuffer, int pPackedLight) {
 
+
         super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
     }
 

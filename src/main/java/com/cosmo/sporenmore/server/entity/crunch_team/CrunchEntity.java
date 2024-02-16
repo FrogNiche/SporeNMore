@@ -253,7 +253,7 @@ public class CrunchEntity extends Monster {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Animal.createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 200D)
+                .add(Attributes.MAX_HEALTH, 150D)
                 .add(Attributes.FOLLOW_RANGE, 24D)
                 .add(Attributes.MOVEMENT_SPEED, 0.20D)
                 .add(Attributes.ARMOR_TOUGHNESS, 0.16f)

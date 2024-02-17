@@ -7,6 +7,7 @@ import com.cosmo.sporenmore.server.block.block.SNMBlockHandler;
 import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
 import com.cosmo.sporenmore.server.entity.client.CrunchRenderer;
 import com.cosmo.sporenmore.server.entity.client.JFRenderer;
+import com.cosmo.sporenmore.server.entity.crunch_team.EntityJetpackFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityCaveFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityFatFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityTallFox;

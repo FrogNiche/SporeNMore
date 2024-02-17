@@ -5,6 +5,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.entity.monster.Enemy;
 
 public class JFAttackGoal extends MeleeAttackGoal {
     private final EntityJetpackFox entity;
@@ -12,8 +13,8 @@ public class JFAttackGoal extends MeleeAttackGoal {
     private int ticksUntilNextAttack = 200;
     private boolean shouldCountTillNextAttack = false;
 
-    public JFAttackGoal(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
-        super(pMob, pSpeedModifier, pFollowingTargetEvenIfNotSeen);
+    public JFAttackGoal(Enemy pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
+        super((PathfinderMob) pMob, pSpeedModifier, pFollowingTargetEvenIfNotSeen);
         entity = ((EntityJetpackFox) pMob);
     }
 

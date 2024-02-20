@@ -21,9 +21,6 @@ public class JFRenderer extends MobRenderer<EntityJetpackFox, JetpackFoxModel<En
 
         super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
     }
-    protected int getBlockLightLevel(EntityJetpackFox p_113910_, BlockPos p_113911_) {
-        return 15;
-    }
     @Override
     public ResourceLocation getTextureLocation(EntityJetpackFox p_114482_) {
         return new ResourceLocation(SporeNMore.MOD_ID, "textures/entity/tex_jetpack_fox.png");

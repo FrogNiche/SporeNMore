@@ -1,6 +1,7 @@
 package com.cosmo.sporenmore.server.entity.event;
 
 import com.cosmo.sporenmore.SporeNMore;
+import com.cosmo.sporenmore.server.entity.client.ClawFoxModel;
 import com.cosmo.sporenmore.server.entity.client.CrunchModel;
 import com.cosmo.sporenmore.server.entity.client.JetpackFoxModel;
 import com.cosmo.sporenmore.server.entity.client.ModModelLayers;
@@ -15,5 +16,6 @@ public class ModEventBusClientEvents {
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModModelLayers.CRUNCH_LAYER, CrunchModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.JF_LAYER, JetpackFoxModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.CLAWFOX_LAYER, ClawFoxModel::createBodyLayer);
     }
 }

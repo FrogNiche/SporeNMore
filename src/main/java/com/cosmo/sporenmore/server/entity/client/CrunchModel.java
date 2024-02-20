@@ -67,7 +67,7 @@ public class CrunchModel<T extends Entity> extends HierarchicalModel<T> {
 		this.root().getAllParts().forEach(ModelPart::resetPose);
 		this.applyHeadRotation(netHeadYaw, headPitch, ageInTicks);
 
-		this.animateWalk(CrunchAnimations.CRUNCH_WALK, limbSwing, limbSwingAmount, 1f, 2f);
+		this.animateWalk(CrunchAnimations.CRUNCH_WALK, limbSwing, limbSwingAmount, 2f, 2.5f);
 		this.animate(((CrunchEntity) entity).idleAnimationState, CrunchAnimations.CRUNCH_IDLE, ageInTicks, 1f);
 		this.animate(((CrunchEntity) entity).TummyScratchingAnimationState, CrunchAnimations.CRUNCH_EAR_SCRATCHING, ageInTicks, 1f);
 		this.animate(((CrunchEntity) entity).attackAnimationState, CrunchAnimations.CRUNCH_STOMP, ageInTicks, 1f);

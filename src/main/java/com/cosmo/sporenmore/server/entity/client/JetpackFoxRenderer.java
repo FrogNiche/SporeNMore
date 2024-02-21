@@ -5,12 +5,11 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.entity.MobRenderer;
-import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
 
-public class JFRenderer extends MobRenderer<EntityJetpackFox, JetpackFoxModel<EntityJetpackFox>> {
-    public JFRenderer(EntityRendererProvider.Context pContext) {
-        super(pContext, new JetpackFoxModel<>(pContext.bakeLayer(ModModelLayers.JF_LAYER)), 2f);
+public class JetpackFoxRenderer extends MobRenderer<EntityJetpackFox, JetpackFoxModel<EntityJetpackFox>> {
+    public JetpackFoxRenderer(EntityRendererProvider.Context pContext) {
+        super(pContext, new JetpackFoxModel<>(pContext.bakeLayer(ModModelLayers.JETPACK_FOX_LAYER)), 2f);
     }
 
 

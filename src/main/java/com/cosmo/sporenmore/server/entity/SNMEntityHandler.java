@@ -33,9 +33,7 @@ public class SNMEntityHandler {
             EntityType.Builder.of(EntityJetpackFox::new,
                     MobCategory.MONSTER));
 
-    public static final RegistryObject<EntityType<EntityClawFox>> CLAW_FOX = register("claw_fox",
-            EntityType.Builder.of(EntityClawFox::new,
-                    MobCategory.MONSTER));
+  //  public static final RegistryObject<EntityType<EntityClawFox>> CLAW_FOX = register("claw_fox", EntityType.Builder.of(EntityClawFox::new,MobCategory.MONSTER));
     public static final RegistryObject<EntityType<EntityDevourer>> DEVOURER = register("devourer", EntityType.Builder.of(EntityDevourer::new,
             MobCategory.MONSTER).sized(2f, 7f));
 

@@ -5,10 +5,8 @@ import com.cosmo.sporenmore.client.particle.SNMParticleTypes;
 import com.cosmo.sporenmore.client.sound.SNMSoundHandler;
 import com.cosmo.sporenmore.server.block.block.SNMBlockHandler;
 import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
-import com.cosmo.sporenmore.server.entity.client.ClawFoxRenderer;
 import com.cosmo.sporenmore.server.entity.client.CrunchRenderer;
-import com.cosmo.sporenmore.server.entity.client.JFRenderer;
-import com.cosmo.sporenmore.server.entity.crunch_team.EntityJetpackFox;
+import com.cosmo.sporenmore.server.entity.client.JetpackFoxRenderer;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityCaveFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityFatFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityTallFox;
@@ -93,8 +91,8 @@ public class SporeNMore {
     private void clientSetup(FMLClientSetupEvent event) {
         EntityRenderers.register(SNMEntityHandler.DEVOURER.get(), DevourerRenderer::new);
         EntityRenderers.register(SNMEntityHandler.CRUNCH.get(), CrunchRenderer::new);
-        EntityRenderers.register(SNMEntityHandler.JETPACK_FOX.get(), JFRenderer::new);
-        EntityRenderers.register(SNMEntityHandler.CLAW_FOX.get(), ClawFoxRenderer::new);
+        EntityRenderers.register(SNMEntityHandler.JETPACK_FOX.get(), JetpackFoxRenderer::new);
+       // EntityRenderers.register(SNMEntityHandler.CLAW_FOX.get(), ClawFoxRenderer::new);
       //  EntityRenderers.register(SNMEntityHandler.THE_CRUNCH.get(), makeRenderer(new ModelCrunch()));
         EntityRenderers.register(SNMEntityHandler.LE_GIANTE.get(), makeRenderer(new ModelGiant()));
         EntityRenderers.register(SNMEntityHandler.POOSTLE.get(), makeRenderer(new ModelPoostle()));
@@ -148,8 +146,8 @@ public class SporeNMore {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(SNMEntityHandler.CRUNCH.get(), CrunchRenderer::new);
-            EntityRenderers.register(SNMEntityHandler.CLAW_FOX.get(), ClawFoxRenderer::new);
-            EntityRenderers.register(SNMEntityHandler.JETPACK_FOX.get(), JFRenderer::new);
+         //   EntityRenderers.register(SNMEntityHandler.CLAW_FOX.get(), ClawFoxRenderer::new);
+            EntityRenderers.register(SNMEntityHandler.JETPACK_FOX.get(), JetpackFoxRenderer::new);
             EntityRenderers.register(SNMEntityHandler.DEVOURER.get(), DevourerRenderer::new);
          //   EntityRenderers.register(SNMEntityHandler.THE_CRUNCH.get(), makeRenderer(new ModelCrunch()));
             EntityRenderers.register(SNMEntityHandler.CAVE_FOX.get(), makeRenderer(new ModelCaveFox()));

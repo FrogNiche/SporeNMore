@@ -8,14 +8,14 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.monster.Enemy;
 
 public class JFAttackGoal extends MeleeAttackGoal {
-    private final EntityJetpackFox entity;
+    private final EntityJetpackFox jetpackFox;
     private int attackDelay = 65;
     private int ticksUntilNextAttack = 200;
     private boolean shouldCountTillNextAttack = false;
 
     public JFAttackGoal(Enemy pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
         super((PathfinderMob) pMob, pSpeedModifier, pFollowingTargetEvenIfNotSeen);
-        entity = ((EntityJetpackFox) pMob);
+        jetpackFox = ((EntityJetpackFox) pMob);
     }
 
     @Override
@@ -31,7 +31,7 @@ public class JFAttackGoal extends MeleeAttackGoal {
             shouldCountTillNextAttack = true;
 
             if(isTimeToStartAttackAnimation()) {
-                entity.setAttacking(true);
+                jetpackFox.setAttacking(true);
             }
 
             if(isTimeToAttack()) {
@@ -41,8 +41,8 @@ public class JFAttackGoal extends MeleeAttackGoal {
         } else {
             resetAttackCooldown();
             shouldCountTillNextAttack = false;
-            entity.setAttacking(false);
-            entity.attackAnimationTimeout = 0;
+            jetpackFox.setAttacking(false);
+            jetpackFox.attackAnimationTimeout = 0;
         }
     }
 
@@ -82,7 +82,7 @@ public class JFAttackGoal extends MeleeAttackGoal {
 
     @Override
     public void stop() {
-        entity.setAttacking(false);
+        jetpackFox.setAttacking(false);
         super.stop();
     }
 }

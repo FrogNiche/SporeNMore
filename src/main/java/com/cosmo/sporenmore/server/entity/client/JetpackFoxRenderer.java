@@ -12,17 +12,16 @@ public class JetpackFoxRenderer extends MobRenderer<EntityJetpackFox, JetpackFox
         super(pContext, new JetpackFoxModel<>(pContext.bakeLayer(ModModelLayers.JETPACK_FOX_LAYER)), 2f);
     }
 
-
+    @Override
+    public ResourceLocation getTextureLocation(EntityJetpackFox p_114482_) {
+        return new ResourceLocation(SporeNMore.MOD_ID, "textures/entity/tex_jetpack_fox.png");
+    }
     @Override
     public void render(EntityJetpackFox pEntity, float pEntityYaw, float pPartialTicks, PoseStack pMatrixStack,
                        MultiBufferSource pBuffer, int pPackedLight) {
 
 
         super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
-    }
-    @Override
-    public ResourceLocation getTextureLocation(EntityJetpackFox p_114482_) {
-        return new ResourceLocation(SporeNMore.MOD_ID, "textures/entity/tex_jetpack_fox.png");
     }
 
 }

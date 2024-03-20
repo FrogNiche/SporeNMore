@@ -1,13 +1,9 @@
 package com.cosmo.sporenmore.server.entity.ai;
 
-import com.cosmo.sporenmore.server.entity.crunch_team.CrunchEntity;
-import com.cosmo.sporenmore.server.entity.crunch_team.EntityClawFox;
-import com.cosmo.sporenmore.server.entity.crunch_team.EntityJetpackFox;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
-import net.minecraft.world.entity.monster.Enemy;
 
 public class ClawFoxAttackGoal extends MeleeAttackGoal {
     private final EntityClawFox entity;

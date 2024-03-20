@@ -2,7 +2,6 @@ package com.cosmo.sporenmore.server.entity;
 
 import com.cosmo.sporenmore.SporeNMore;
 import com.cosmo.sporenmore.server.entity.crunch_team.CrunchEntity;
-import com.cosmo.sporenmore.server.entity.crunch_team.EntityClawFox;
 import com.cosmo.sporenmore.server.entity.crunch_team.EntityJetpackFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityCaveFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityFatFox;

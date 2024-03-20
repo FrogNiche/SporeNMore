@@ -2,7 +2,6 @@ package com.cosmo.sporenmore.server.entity.event;
 import com.cosmo.sporenmore.SporeNMore;
 import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
 import com.cosmo.sporenmore.server.entity.crunch_team.CrunchEntity;
-import com.cosmo.sporenmore.server.entity.crunch_team.EntityClawFox;
 import com.cosmo.sporenmore.server.entity.crunch_team.EntityJetpackFox;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

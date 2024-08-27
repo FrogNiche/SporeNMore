@@ -41,10 +41,6 @@ public class SNMItemHandler {
                     new Item.Properties()));
 
 
-    public static final RegistryObject<Item> JF_SPAWN_EGG = ITEMS.register("jf_spawn_egg",
-            () -> new ForgeSpawnEggItem(SNMEntityHandler.JETPACK_FOX, 0x874056, 0x18050f,
-                    new Item.Properties()));
-    // Items
 public static final RegistryObject<Item> FUR = ITEMS.register("fur",
         () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 

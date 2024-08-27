@@ -2,7 +2,6 @@ package com.cosmo.sporenmore.server.entity;
 
 import com.cosmo.sporenmore.SporeNMore;
 import com.cosmo.sporenmore.server.entity.crunch_team.CrunchEntity;
-import com.cosmo.sporenmore.server.entity.crunch_team.EntityJetpackFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityCaveFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityFatFox;
 import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityTallFox;
@@ -22,17 +21,9 @@ public class SNMEntityHandler {
 
     public static final DeferredRegister<EntityType<?>> SNM_ENTITY = DeferredRegister.create(ENTITY_TYPES, SporeNMore.MOD_ID);
 
-
     public static final RegistryObject<EntityType<CrunchEntity>> CRUNCH = register("crunch",
             EntityType.Builder.of(CrunchEntity::new,
             MobCategory.MONSTER).sized(3.50f, 5f));
-
-
-    public static final RegistryObject<EntityType<EntityJetpackFox>> JETPACK_FOX = register("jetpack_fox",
-            EntityType.Builder.of(EntityJetpackFox::new,
-                    MobCategory.MONSTER));
-
-  //  public static final RegistryObject<EntityType<EntityClawFox>> CLAW_FOX = register("claw_fox", EntityType.Builder.of(EntityClawFox::new,MobCategory.MONSTER));
     public static final RegistryObject<EntityType<EntityDevourer>> DEVOURER = register("devourer", EntityType.Builder.of(EntityDevourer::new,
             MobCategory.MONSTER).sized(2f, 7f));
 

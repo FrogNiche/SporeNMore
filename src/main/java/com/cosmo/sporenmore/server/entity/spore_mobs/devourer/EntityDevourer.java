@@ -142,13 +142,6 @@ public class EntityDevourer extends Monster implements GeoEntity, RoarEntity {
                 }
             }
 
-            if (this.vomitCooldown > 0) {
-                this.vomitCooldown--;
-                if (this.vomitCooldown == 0) {
-                    Vomit();
-                }
-
-            }
             bossBar.setProgress(this.getHealth() / this.getMaxHealth());
         }
 

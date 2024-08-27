@@ -1,6 +1,5 @@
-package com.cosmo.sporenmore.server.entity.crunch_team;
+package com.cosmo.sporenmore.server.entity.entity;
 import com.cosmo.sporenmore.server.entity.ai.CrunchAttackGoal;
-import com.cosmo.sporenmore.server.entity.animations.CrunchAnimations;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -20,7 +19,6 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
-import software.bernie.geckolib.core.animation.Animation;
 
 public class CrunchEntity extends Monster {
 

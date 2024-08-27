@@ -1,8 +1,7 @@
 package com.cosmo.sporenmore.client.models.entity;
 
 import com.cosmo.sporenmore.SporeNMore;
-import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityCaveFox;
-import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityTallFox;
+import com.cosmo.sporenmore.server.entity.entity.EntityTallFox;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
 

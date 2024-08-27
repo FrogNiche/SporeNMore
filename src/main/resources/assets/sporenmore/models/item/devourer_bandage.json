@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "sporenmore:item/tooth"
+    "layer0": "sporenmore:item/devourer_bandage"
   }
 }

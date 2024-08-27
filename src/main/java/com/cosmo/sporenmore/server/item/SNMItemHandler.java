@@ -1,7 +1,7 @@
 package com.cosmo.sporenmore.server.item;
 
 import com.cosmo.sporenmore.SporeNMore;
-import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
+import com.cosmo.sporenmore.server.entity.entity.SNMEntityHandler;
 import com.cosmo.sporenmore.server.item.armour.armor.ModArmorMaterials;
 import com.cosmo.sporenmore.server.item.armour.belt.SkirtArmour;
 import com.cosmo.sporenmore.server.item.armour.furry_hoodie.FurryHoodie;
@@ -28,6 +28,10 @@ public class SNMItemHandler {
             () -> new ForgeSpawnEggItem(SNMEntityHandler.LE_GIANTE, 0xe27c21, 0xb05122,
                     new Item.Properties()));
 
+    public static final RegistryObject<Item> CLAWFOX_SPAWN_EGG = ITEMS.register("clawfox_spawn_egg",
+            () -> new ForgeSpawnEggItem(SNMEntityHandler.CLAWFOX, 0x1e1b19, 0xcc6920,
+                    new Item.Properties()));
+
     public static final RegistryObject<Item> FLYING_SPORED_FOX_SPAWN_EGG = ITEMS.register("flying_spore_fox_spawn_egg",
             () -> new ForgeSpawnEggItem(SNMEntityHandler.POOSTLE, 0xbfa999, 0x769663,
                     new Item.Properties()));
@@ -47,12 +51,12 @@ public static final RegistryObject<Item> FUR = ITEMS.register("fur",
     public static final RegistryObject<Item> LOGO = ITEMS.register("logo",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
-    public static final RegistryObject<Item> TOOTH_DUST = ITEMS.register("tooth_dust",
+    public static final RegistryObject<Item> MONSTROUS_SHARD = ITEMS.register("monstrous_shard",
             () -> new Item(new Item.Properties()));
 
 
-    public static final RegistryObject<Item> TOOTH = ITEMS.register("tooth",
-            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+    public static final RegistryObject<Item> DEVOURER_BANDAGE = ITEMS.register("devourer_bandage",
+            () -> new Item(new Item.Properties()));
 
 
     public static final RegistryObject<ItemToothFangDagger> TOOTH_DAGGER = ITEMS.register("tooth_dagger",

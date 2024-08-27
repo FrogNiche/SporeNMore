@@ -1,7 +1,7 @@
 package com.cosmo.sporenmore.client.models.entity;
 
 import com.cosmo.sporenmore.SporeNMore;
-import com.cosmo.sporenmore.server.entity.the_crunch.EntityLeGiant;
+import com.cosmo.sporenmore.server.entity.entity.EntityLeGiant;
 import net.minecraft.resources.ResourceLocation;
 import software.bernie.geckolib.model.GeoModel;
 

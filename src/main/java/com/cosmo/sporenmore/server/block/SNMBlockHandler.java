@@ -1,4 +1,4 @@
-package com.cosmo.sporenmore.server.block.block;
+package com.cosmo.sporenmore.server.block;
 
 import com.cosmo.sporenmore.SporeNMore;
 import com.cosmo.sporenmore.server.item.SNMItemHandler;

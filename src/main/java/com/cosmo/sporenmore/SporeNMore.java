@@ -3,17 +3,18 @@ package com.cosmo.sporenmore;
 import com.cosmo.sporenmore.client.models.entity.*;
 import com.cosmo.sporenmore.client.particle.SNMParticleTypes;
 import com.cosmo.sporenmore.client.sound.SNMSoundHandler;
-import com.cosmo.sporenmore.server.block.block.SNMBlockHandler;
-import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
+import com.cosmo.sporenmore.server.block.SNMBlockHandler;
+import com.cosmo.sporenmore.server.entity.entity.SNMEntityHandler;
+import com.cosmo.sporenmore.server.entity.client.ClawFoxRenderer;
 import com.cosmo.sporenmore.server.entity.client.CrunchRenderer;
-import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityCaveFox;
-import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityFatFox;
-import com.cosmo.sporenmore.server.entity.nomal_foxes.EntityTallFox;
+import com.cosmo.sporenmore.server.entity.entity.EntityCaveFox;
+import com.cosmo.sporenmore.server.entity.entity.EntityFatFox;
+import com.cosmo.sporenmore.server.entity.entity.EntityTallFox;
 import com.cosmo.sporenmore.server.entity.spore_mobs.EntityBuldgingSporeFox;
 import com.cosmo.sporenmore.server.entity.spore_mobs.EntityPoostle;
 import com.cosmo.sporenmore.server.entity.spore_mobs.devourer.DevourerRenderer;
 import com.cosmo.sporenmore.server.entity.spore_mobs.devourer.EntityDevourer;
-import com.cosmo.sporenmore.server.entity.the_crunch.EntityLeGiant;
+import com.cosmo.sporenmore.server.entity.entity.EntityLeGiant;
 import com.cosmo.sporenmore.server.item.SNMItemHandler;
 import com.cosmo.sporenmore.server.item.tab.SNMTab;
 import com.mojang.logging.LogUtils;
@@ -90,7 +91,7 @@ public class SporeNMore {
     private void clientSetup(FMLClientSetupEvent event) {
         EntityRenderers.register(SNMEntityHandler.DEVOURER.get(), DevourerRenderer::new);
         EntityRenderers.register(SNMEntityHandler.CRUNCH.get(), CrunchRenderer::new);
-
+        EntityRenderers.register(SNMEntityHandler.CLAWFOX.get(), ClawFoxRenderer::new);
         EntityRenderers.register(SNMEntityHandler.LE_GIANTE.get(), makeRenderer(new ModelGiant()));
         EntityRenderers.register(SNMEntityHandler.POOSTLE.get(), makeRenderer(new ModelPoostle()));
         EntityRenderers.register(SNMEntityHandler.BULDGING_SPORE_FOX.get(),
@@ -113,16 +114,19 @@ public class SporeNMore {
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
         if (event.getTab() == SNMTab.SPORE_N_MORE) {
-          /*  event.accept(SNMItemHandler.FUR);
-            event.accept(SNMItemHandler.FUR_BUNDLE);
+           event.accept(SNMItemHandler.FUR);
+            event.accept(SNMItemHandler.DEVOURER_BANDAGE);
+            event.accept(SNMItemHandler.MONSTROUS_SHARD);
+          /*  event.accept(SNMItemHandler.FUR_BUNDLE);
             event.accept(SNMItemHandler.FURRY_HOODIE);
             event.accept(SNMItemHandler.SKIRT);
          event.accept(SNMItemHandler.TOOTH);
             event.accept(SNMItemHandler.TOOTH_DUST);
             event.accept(SNMItemHandler.TOOTH_DAGGER);
-          */ event.accept(SNMItemHandler.BONE_HAMMER);
+          */event.accept(SNMItemHandler.BONE_HAMMER);
             event.accept(SNMItemHandler.SKIRT);
             event.accept(SNMItemHandler.CRUNCH_SPAWN_EGG);
+            event.accept(SNMItemHandler.CLAWFOX_SPAWN_EGG);
             event.accept(SNMItemHandler.GIANT_SPAWN_EGG);
             event.accept(SNMItemHandler.DEVOURER_SPAWN_EGG);
          event.accept(SNMItemHandler.CAVE_FOX_SPAWN_EGG);
@@ -142,7 +146,7 @@ public class SporeNMore {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(SNMEntityHandler.CRUNCH.get(), CrunchRenderer::new);
-         //   EntityRenderers.register(SNMEntityHandler.CLAW_FOX.get(), ClawFoxRenderer::new);
+           EntityRenderers.register(SNMEntityHandler.CLAWFOX.get(), ClawFoxRenderer::new);
             EntityRenderers.register(SNMEntityHandler.DEVOURER.get(), DevourerRenderer::new);
 
             EntityRenderers.register(SNMEntityHandler.CAVE_FOX.get(), makeRenderer(new ModelCaveFox()));

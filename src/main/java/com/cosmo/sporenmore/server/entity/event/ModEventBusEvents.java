@@ -1,7 +1,7 @@
 package com.cosmo.sporenmore.server.entity.event;
 import com.cosmo.sporenmore.SporeNMore;
-import com.cosmo.sporenmore.server.entity.SNMEntityHandler;
-import com.cosmo.sporenmore.server.entity.crunch_team.CrunchEntity;
+import com.cosmo.sporenmore.server.entity.entity.SNMEntityHandler;
+import com.cosmo.sporenmore.server.entity.entity.CrunchEntity;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -11,6 +11,7 @@ public class ModEventBusEvents {
     @SubscribeEvent
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(SNMEntityHandler.CRUNCH.get(), CrunchEntity.createAttributes().build());
+        event.put(SNMEntityHandler.CLAWFOX.get(), CrunchEntity.createAttributes().build());
 
     }
 }

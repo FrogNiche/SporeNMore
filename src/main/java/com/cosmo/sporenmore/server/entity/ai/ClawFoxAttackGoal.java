@@ -1,20 +1,20 @@
 package com.cosmo.sporenmore.server.entity.ai;
 
-import com.cosmo.sporenmore.server.entity.entity.CrunchEntity;
+import com.cosmo.sporenmore.server.entity.entity.EntityClawFox;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 
-public class CrunchAttackGoal extends MeleeAttackGoal {
-    private final CrunchEntity entity;
+public class ClawFoxAttackGoal extends MeleeAttackGoal {
+    private final EntityClawFox entity;
     private int attackDelay = 10;
     private int ticksUntilNextAttack = 20;
     private boolean shouldCountTillNextAttack = false;
 
-    public CrunchAttackGoal(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
+    public ClawFoxAttackGoal(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
         super(pMob, pSpeedModifier, pFollowingTargetEvenIfNotSeen);
-        entity = ((CrunchEntity) pMob);
+        entity = ((EntityClawFox) pMob);
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CrunchAttackGoal extends MeleeAttackGoal {
             resetAttackCooldown();
             shouldCountTillNextAttack = false;
             entity.setAttacking(false);
-            entity.stompAnimationTimeout = 0;
+            entity.attackAnimationTimeout = 0;
         }
     }
 

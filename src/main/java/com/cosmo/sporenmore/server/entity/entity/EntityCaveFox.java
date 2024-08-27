@@ -1,4 +1,4 @@
-package com.cosmo.sporenmore.server.entity.nomal_foxes;
+package com.cosmo.sporenmore.server.entity.entity;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.RandomSource;

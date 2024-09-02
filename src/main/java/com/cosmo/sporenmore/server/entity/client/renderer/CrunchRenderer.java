@@ -1,5 +1,7 @@
-package com.cosmo.sporenmore.server.entity.client;
+package com.cosmo.sporenmore.server.entity.client.renderer;
 import com.cosmo.sporenmore.SporeNMore;
+import com.cosmo.sporenmore.server.entity.client.model.CrunchModel;
+import com.cosmo.sporenmore.server.entity.client.model.ModModelLayers;
 import com.cosmo.sporenmore.server.entity.entity.CrunchEntity;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "sporenmore:block_of_fur"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "item": "sporenmore:fur"
+  }
+}

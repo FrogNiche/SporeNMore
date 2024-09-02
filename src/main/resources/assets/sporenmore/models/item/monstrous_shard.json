@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/generated",
   "textures": {
-    "layer0": "sporenmore:item/furry_hoodie_icon"
+    "layer0": "sporenmore:item/monstrous_shard"
   }
 }

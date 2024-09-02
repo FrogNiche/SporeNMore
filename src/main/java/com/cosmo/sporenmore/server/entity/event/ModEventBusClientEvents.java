@@ -1,9 +1,9 @@
 package com.cosmo.sporenmore.server.entity.event;
 
 import com.cosmo.sporenmore.SporeNMore;
-import com.cosmo.sporenmore.server.entity.client.ClawFoxModel;
-import com.cosmo.sporenmore.server.entity.client.CrunchModel;
-import com.cosmo.sporenmore.server.entity.client.ModModelLayers;
+import com.cosmo.sporenmore.server.entity.client.model.ClawFoxModel;
+import com.cosmo.sporenmore.server.entity.client.model.CrunchModel;
+import com.cosmo.sporenmore.server.entity.client.model.ModModelLayers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;

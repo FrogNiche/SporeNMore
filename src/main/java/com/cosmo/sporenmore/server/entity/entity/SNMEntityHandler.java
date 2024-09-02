@@ -47,7 +47,8 @@ public class SNMEntityHandler {
 
     public static final RegistryObject<EntityType<EntityClawFox>> CLAWFOX = register("clawfox",
             EntityType.Builder.of(EntityClawFox::new,
-                    MobCategory.MONSTER).sized(1f, 2f));
+                    MobCategory.MONSTER));
+
     public static final RegistryObject<EntityType<EntityCaveFox>> CAVE_FOX = register("cave_fox", EntityType.Builder.of(EntityCaveFox::new,
             MobCategory.MONSTER));
 

@@ -5,18 +5,24 @@
   "entity.sporenmore.buldging_spore_fox": "Bulging Spore Fox",
   "entity.sporenmore.cave_fox": "Cave Fox",
   "entity.sporenmore.devourer": "The Devourer",
+  "entity.sporenmore.decayed": "Decayed",
+
+  "_comment": "Titles/Advancements",
   "item.sporenmore.logo": "Spore N' More",
+  "creativemodetab.spore_n_more": "Spore N' More",
+  "advancements.sporenmore.kill_the_crunch.title": "You monster!",
+  "advancements.sporenmore.kill_the_crunch.description": "Kill The Crunch",
+
+  "_comment": "Items/Armours",
   "item.sporenmore.fur": "Fur",
   "item.sporenmore.skirt": "The Crunch's Skirt",
   "item.sporenmore.tooth_dagger": "Tooth Dagger",
   "item.sporenmore.devourer_bandage": "The Devourer's Bandage",
   "item.sporenmore.bone_hammer": "Bone Hammer",
-  "item.sporenmore.tooth_hammer": "Tooth Hammer",
-  "item.sporenmore.tooth_dust": "Tooth Dust",
+  "item.sporenmore.twinmill_axe": "Twin-mill Axe",
   "item.sporenmore.monstrous_shard": "Monstrous Shard",
-  "item.sporenmore.belt": "Belt",
-  "block.sporenmore.pillow": "Pillow",
-  "item.sporenmore.fur_bundle": "Fur Bundle",
+
+  "_comment": "Spawn Eggs",
   "item.sporenmore.the_crunch_spawn_egg": "The Crunch Spawn Egg",
   "item.sporenmore.jf_spawn_egg": "Jet-Pack Fox Spawn Egg",
   "item.sporenmore.flying_spore_fox": "Flying Spored Fox Spawn Egg",
@@ -25,15 +31,10 @@
   "item.sporenmore.devourer_spawn_egg": "The Devourer Spawn Egg",
   "item.sporenmore.flying_spore_fox_spawn_egg": "No name Spawn Egg",
   "item.sporenmore.clawfox_spawn_egg": "Claw Fox Spawn Egg",
+  "item.sporenmore.decayed_spawn_egg": "Decayed Spawn Egg",
 
+  "_comment": "Blocks",
   "block.sporenmore.block_of_fur": "Block Of Fur",
-  "block.sporenmore.block_of_teeth": "Block of Teeth",
-
-  "creativemodetab.spore_n_more": "Spore N' More",
-
-
-  "advancements.sporenmore.kill_the_crunch.title": "You monster!",
-
-  "advancements.sporenmore.kill_the_crunch.description": "Kill The Crunch"
-
+  "block.sporenmore.dirt_atlas": "Dirt Atlas",
+  "block.sporenmore.rugged_stone": "Rugged Stone"
 }

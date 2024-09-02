@@ -12,6 +12,5 @@ public class ModEventBusEvents {
     public static void registerAttributes(EntityAttributeCreationEvent event) {
         event.put(SNMEntityHandler.CRUNCH.get(), CrunchEntity.createAttributes().build());
         event.put(SNMEntityHandler.CLAWFOX.get(), CrunchEntity.createAttributes().build());
-
     }
 }

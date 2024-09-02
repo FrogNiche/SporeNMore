@@ -44,6 +44,10 @@ public class SNMItemHandler {
             () -> new ForgeSpawnEggItem(SNMEntityHandler.CAVE_FOX, 0xae642f, 0x472a17,
                     new Item.Properties()));
 
+    public static final RegistryObject<Item> DECAYED_SPAWN_EGG = ITEMS.register("decayed_spawn_egg",
+            () -> new ForgeSpawnEggItem(SNMEntityHandler.DECAYED, 0x6e6b58, 0x3a3812,
+                    new Item.Properties()));
+
 
 public static final RegistryObject<Item> FUR = ITEMS.register("fur",
         () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
@@ -64,6 +68,10 @@ public static final RegistryObject<Item> FUR = ITEMS.register("fur",
 
     public static final RegistryObject<ItemBoneHammer> BONE_HAMMER = ITEMS.register("bone_hammer",
             () -> new ItemBoneHammer(new Item.Properties().rarity(Rarity.EPIC).stacksTo(1)));
+
+
+    public static final RegistryObject<AxeItem> TWINMILL_AXE = ITEMS.register("twinmill_axe",
+            () -> new AxeItem(Tiers.NETHERITE, 5.0F, -3.0F, (new Item.Properties()).fireResistant()));
 
 
     public static final RegistryObject<BundleItem> FUR_BUNDLE = ITEMS.register("fur_bundle",

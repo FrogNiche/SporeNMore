@@ -1,9 +1,0 @@
-{
-  "parent": "item/generated",
-  "textures": {
-    "layer0": "sporenmore:item/fur_bundle"
-  },
-  "overrides": [
-    { "predicate": { "filled": 0.0000001 }, "model": "sporenmore:item/fur_bundle_filled" }
-  ]
-}

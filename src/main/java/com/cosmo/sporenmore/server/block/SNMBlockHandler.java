@@ -24,9 +24,13 @@ public class SNMBlockHandler {
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
                     .strength(9f).noOcclusion()));
 
-    public static final RegistryObject<Block> BLOCK_OF_TEETH = registerBlock("block_of_teeth",
+    public static final RegistryObject<Block> RUGGED_STONE = registerBlock("rugged_stone",
             () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
-                    .strength(9f).noOcclusion()));
+                    .strength(9f)));
+
+    public static final RegistryObject<Block> DIRT_ATLAS = registerBlock("dirt_atlas",
+            () -> new Block(BlockBehaviour.Properties.of(Material.DIRT)
+                    .strength(9f)));
 
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {

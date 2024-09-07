@@ -6,9 +6,9 @@
 				"identifier": "geometry.devourer",
 				"texture_width": 16,
 				"texture_height": 16,
-				"visible_bounds_width": 9,
-				"visible_bounds_height": 9.5,
-				"visible_bounds_offset": [0, 4.25, 0]
+				"visible_bounds_width": 12,
+				"visible_bounds_height": 10.5,
+				"visible_bounds_offset": [0, 4.75, 0]
 			},
 			"bones": [
 				{

@@ -1,20 +1,19 @@
 package com.cosmo.sporenmore.server.entity.ai;
-
-import com.cosmo.sporenmore.server.entity.entity.EntityCrunch;
+import com.cosmo.sporenmore.server.entity.entity.EntityTheDevourer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 
-public class CrunchAttackGoal extends MeleeAttackGoal {
-    private final EntityCrunch entity;
-    private int attackDelay = 10;
-    private int ticksUntilNextAttack = 20;
+public class DevourerSmashGoal extends MeleeAttackGoal {
+    private final EntityTheDevourer entity;
+    private int attackDelay = 40;
+    private int ticksUntilNextAttack = 40;
     private boolean shouldCountTillNextAttack = false;
 
-    public CrunchAttackGoal(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
+    public DevourerSmashGoal(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
         super(pMob, pSpeedModifier, pFollowingTargetEvenIfNotSeen);
-        entity = ((EntityCrunch) pMob);
+        entity = ((EntityTheDevourer) pMob);
     }
 
     @Override
@@ -30,7 +29,7 @@ public class CrunchAttackGoal extends MeleeAttackGoal {
             shouldCountTillNextAttack = true;
 
             if(isTimeToStartAttackAnimation()) {
-                entity.setAttacking(true);
+                entity.setSmashing(true);
             }
 
             if(isTimeToAttack()) {
@@ -40,8 +39,8 @@ public class CrunchAttackGoal extends MeleeAttackGoal {
         } else {
             resetAttackCooldown();
             shouldCountTillNextAttack = false;
-            entity.setAttacking(false);
-            entity.stompAnimationTimeout = 0;
+            entity.setSmashing(false);
+            entity.smashAnimationTimeout = 0;
         }
     }
 
@@ -81,7 +80,7 @@ public class CrunchAttackGoal extends MeleeAttackGoal {
 
     @Override
     public void stop() {
-        entity.setAttacking(false);
+        entity.setSmashing(false);
         super.stop();
     }
 }

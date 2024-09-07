@@ -1,4 +1,5 @@
 package com.cosmo.sporenmore.server.entity.entity;
+import com.cosmo.sporenmore.client.sound.SNMSoundHandler;
 import com.cosmo.sporenmore.server.entity.ai.CrunchAttackGoal;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
@@ -20,12 +21,12 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class CrunchEntity extends Monster {
+public class EntityCrunch extends Monster {
 
     private static final EntityDataAccessor<Boolean> STOMPING =
-            SynchedEntityData.defineId(CrunchEntity.class, EntityDataSerializers.BOOLEAN);
+            SynchedEntityData.defineId(EntityCrunch.class, EntityDataSerializers.BOOLEAN);
 
-    public CrunchEntity(EntityType<? extends Monster> pEntityType, Level pLevel) {
+    public EntityCrunch(EntityType<? extends Monster> pEntityType, Level pLevel) {
         super(pEntityType, pLevel);
     }
 
@@ -122,7 +123,7 @@ public class CrunchEntity extends Monster {
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createLivingAttributes()
-                .add(Attributes.MAX_HEALTH, 150D)
+                .add(Attributes.MAX_HEALTH, 2000D)
                 .add(Attributes.FOLLOW_RANGE, 24D)
                 .add(Attributes.MOVEMENT_SPEED, 0.20D)
                 .add(Attributes.ARMOR_TOUGHNESS, 0.16f)
@@ -134,13 +135,13 @@ public class CrunchEntity extends Monster {
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return SoundEvents.HOGLIN_AMBIENT;
+        return SNMSoundHandler.CRUNCH_SNIFF.get();
     }
 
     @Nullable
     @Override
     protected SoundEvent getHurtSound(DamageSource pDamageSource) {
-        return SoundEvents.RAVAGER_HURT;
+        return SNMSoundHandler.CRUNCH_SNIFF.get();
     }
 
     @Nullable

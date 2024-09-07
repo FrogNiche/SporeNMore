@@ -1,9 +1,10 @@
 package com.cosmo.sporenmore.server.entity.event;
 
 import com.cosmo.sporenmore.SporeNMore;
-import com.cosmo.sporenmore.server.entity.client.model.ClawFoxModel;
-import com.cosmo.sporenmore.server.entity.client.model.CrunchModel;
-import com.cosmo.sporenmore.server.entity.client.model.ModModelLayers;
+import com.cosmo.sporenmore.client.models.entity.model.ClawFoxModel;
+import com.cosmo.sporenmore.client.models.entity.model.CrunchModel;
+import com.cosmo.sporenmore.client.models.entity.model.TheDevourerModel;
+import com.cosmo.sporenmore.client.models.entity.model.ModModelLayers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -15,5 +16,6 @@ public class ModEventBusClientEvents {
     public static void registerLayer(EntityRenderersEvent.RegisterLayerDefinitions event) {
         event.registerLayerDefinition(ModModelLayers.CRUNCH_LAYER, CrunchModel::createBodyLayer);
         event.registerLayerDefinition(ModModelLayers.CLAWFOX_LAYER, ClawFoxModel::createBodyLayer);
+        event.registerLayerDefinition(ModModelLayers.THE_DEVOURER_LAYER, TheDevourerModel::createBodyLayer);
     }
 }

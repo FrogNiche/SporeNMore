@@ -1,4 +1,4 @@
-package com.cosmo.sporenmore.server.entity.spore_mobs.devourer;
+package com.cosmo.sporenmore.server.entity.event;
 
 public interface RoarEntity {
 
@@ -12,5 +12,4 @@ public interface RoarEntity {
      * @return whether the entity can roar again or not, only correct on the server side
      */
     public boolean canRoar();
-
 }

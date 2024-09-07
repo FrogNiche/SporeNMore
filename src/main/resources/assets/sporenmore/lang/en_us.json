@@ -6,6 +6,7 @@
   "entity.sporenmore.cave_fox": "Cave Fox",
   "entity.sporenmore.devourer": "The Devourer",
   "entity.sporenmore.decayed": "Decayed",
+  "entity.sporenmore.the_devourer": "The Devourer",
 
   "_comment": "Titles/Advancements",
   "item.sporenmore.logo": "Spore N' More",
@@ -24,6 +25,7 @@
 
   "_comment": "Spawn Eggs",
   "item.sporenmore.the_crunch_spawn_egg": "The Crunch Spawn Egg",
+  "item.sporenmore.the_devourer_spawn_egg": "The Devourer Spawn Egg",
   "item.sporenmore.jf_spawn_egg": "Jet-Pack Fox Spawn Egg",
   "item.sporenmore.flying_spore_fox": "Flying Spored Fox Spawn Egg",
   "item.sporenmore.giant_spawn_egg": "Lé Giante Spawn Egg",

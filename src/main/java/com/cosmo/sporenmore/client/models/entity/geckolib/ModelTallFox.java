@@ -1,4 +1,4 @@
-package com.cosmo.sporenmore.client.models.entity;
+package com.cosmo.sporenmore.client.models.entity.geckolib;
 
 import com.cosmo.sporenmore.SporeNMore;
 import com.cosmo.sporenmore.server.entity.entity.EntityTallFox;

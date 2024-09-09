@@ -10,5 +10,89 @@
     "sounds": [
       "sporenmore:crunch.sniff_2"
     ]
-  }
+  },
+  "devourer_idle_1": {
+    "subtitle": "sounds.sporenmore.devourer_idle_1",
+    "sounds": [
+      "sporenmore:devourer_idle_1"
+    ]
+  },
+  "devourer_idle_2": {
+    "subtitle": "sounds.sporenmore.devourer_idle_2",
+    "sounds": [
+      "sporenmore:devourer_idle_2"
+    ]
+  },
+  "devourer_idle_3": {
+    "subtitle": "sounds.sporenmore.devourer_idle_3",
+    "sounds": [
+      "sporenmore:devourer_idle_3"
+    ]
+  },
+  "devourer_idle_4": {
+    "subtitle": "sounds.sporenmore.devourer_idle_4",
+    "sounds": [
+      "sporenmore:devourer_idle_4"
+    ]
+  },
+  "devourer_idle_5": {
+    "subtitle": "sounds.sporenmore.devourer_idle_5",
+    "sounds": [
+      "sporenmore:devourer_idle_5"
+    ]
+  },
+  "devourer_idle_6": {
+    "subtitle": "sounds.sporenmore.devourer_idle_6",
+    "sounds": [
+      "sporenmore:devourer_idle_6"
+    ]
+  },
+  "devourer_idle_7": {
+    "subtitle": "sounds.sporenmore.devourer_idle_7",
+    "sounds": [
+      "sporenmore:devourer_idle_7"
+    ]
+  },
+  "devourer_idle_8": {
+    "subtitle": "sounds.sporenmore.devourer_idle_8",
+    "sounds": [
+      "sporenmore:devourer_idle_8"
+    ]
+  },
+  "devourer.idle.9": {
+    "subtitle": "sounds.sporenmore.devourer.idle.9",
+    "sounds": [
+      "sporenmore:devourer.idle.9"
+    ]
+  },
+    "devourer.hurt.1": {
+      "subtitle": "sounds.sporenmore.devourer.hurt.1",
+      "sounds": [
+        "sporenmore:devourer.hurt.1"
+      ]
+    },
+    "devourer.hurt.2": {
+      "subtitle": "sounds.sporenmore.devourer.hurt.2",
+      "sounds": [
+        "sporenmore:devourer.hurt.2"
+      ]
+    },
+  "devourer.hurt.3": {
+    "subtitle": "sounds.sporenmore.devourer.hurt.3",
+    "sounds": [
+      "sporenmore:devourer.hurt.3"
+    ]
+  },
+  "devourer.hurt.4": {
+    "subtitle": "sounds.sporenmore.devourer.hurt.4",
+    "sounds": [
+      "sporenmore:devourer.hurt.4"
+    ]
+  },
+    "devourer.hurt.5": {
+      "subtitle": "sounds.sporenmore.devourer.hurt.5",
+      "sounds": [
+        "sporenmore:devourer.hurt.5"
+      ]
+    }
 }

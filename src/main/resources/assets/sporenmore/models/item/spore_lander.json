@@ -1,0 +1,18 @@
+{
+	"parent": "minecraft:item/handheld",
+	"loader": "forge:separate_transforms",
+	"base": {
+		"parent": "sporenmore:item/spore_lander_in_hand"
+	},
+	"perspectives": {
+		"gui": {
+			"parent": "sporenmore:item/spore_lander_2d"
+		},
+		"ground": {
+			"parent": "sporenmore:item/spore_lander_2d"
+		},
+		"fixed": {
+			"parent": "sporenmore:item/spore_lander_2d"
+		}
+	}
+}

@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:item/handheld",
   "textures": {
-    "layer0": "sporenmore:item/bone_hammer_icon"
+    "layer0": "sporenmore:item/sporelander_icon"
   }
 }

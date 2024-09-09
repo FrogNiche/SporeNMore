@@ -103,6 +103,7 @@ public class SporeNMore {
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
         if (event.getTab() == SNMTab.SPORE_N_MORE) {
+            event.accept(SNMItemHandler.SPORE_LANDER);
            event.accept(SNMItemHandler.FUR);
             event.accept(SNMItemHandler.DEVOURER_BANDAGE);
             event.accept(SNMBlockHandler.BLOCK_OF_FUR);

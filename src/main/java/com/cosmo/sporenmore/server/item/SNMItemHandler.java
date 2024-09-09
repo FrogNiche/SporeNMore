@@ -45,6 +45,9 @@ public static final RegistryObject<Item> FUR = ITEMS.register("fur",
     public static final RegistryObject<Item> DEVOURER_BANDAGE = ITEMS.register("devourer_bandage",
             () -> new Item(new Item.Properties()));
 
+    public static final RegistryObject<AxeItem> SPORE_LANDER = ITEMS.register("spore_lander", () ->
+            new AxeItem(Tiers.NETHERITE, 5.0F, -3.0F, (new Item.Properties()).fireResistant().rarity(Rarity.EPIC)));
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
         SPAWN_EGGS.register(eventBus);

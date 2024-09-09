@@ -8,15 +8,19 @@ import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
+import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.AnimationState;
 import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Pose;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.*;
 import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
+import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Spider;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -56,7 +60,7 @@ public class EntityTheDevourer extends Monster {
 
     private void setupAnimationStates() {
         if (this.idleAnimationTimeout <= 0) {
-            this.idleAnimationTimeout = this.random.nextInt(40) + 80;
+            this.idleAnimationTimeout = this.random.nextInt(20) + 40;
             this.idleAnimationState.start(this.tickCount);
         } else {
             --this.idleAnimationTimeout;
@@ -64,7 +68,7 @@ public class EntityTheDevourer extends Monster {
 
 
         if (this.isSmashing() && smashAnimationTimeout <= 0) {
-            smashAnimationTimeout = 80; // Length in ticks of your animation
+            smashAnimationTimeout = 120; // Length in ticks of your animation
             smashAnimationState.start(this.tickCount);
 
         } else {
@@ -119,31 +123,39 @@ public class EntityTheDevourer extends Monster {
         this.goalSelector.addGoal(5, new LookAtPlayerGoal(this, Player.class, 3f));
         this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
         this.targetSelector.addGoal(1, new HurtByTargetGoal(this));
-    }
+       }
 
     public static AttributeSupplier.Builder createAttributes() {
         return Monster.createLivingAttributes()
                 .add(Attributes.MAX_HEALTH, 5000D)
                 .add(Attributes.FOLLOW_RANGE, 24D)
-                .add(Attributes.MOVEMENT_SPEED, 0.20D)
+                .add(Attributes.MOVEMENT_SPEED, 0.10D)
                 .add(Attributes.ARMOR_TOUGHNESS, 0.16f)
                 .add(Attributes.ATTACK_KNOCKBACK, 0.5f)
-                .add(Attributes.ATTACK_DAMAGE, 2f);
+                .add(Attributes.ATTACK_DAMAGE, 10f);
     }
 
 
     @Nullable
     @Override
     protected SoundEvent getAmbientSound() {
-        return SNMSoundHandler.CRUNCH_SNIFF.get();
+
+    int i = Mth.nextInt(random, 0, SNMSoundHandler.DEVOURER_IDLE.size());
+        if (i < SNMSoundHandler.DEVOURER_IDLE.size()) {
+        return SNMSoundHandler.DEVOURER_IDLE.get(i).get();
     }
+        return null;
+  }
 
     @Nullable
     @Override
     protected SoundEvent getHurtSound(DamageSource pDamageSource) {
-        return SNMSoundHandler.CRUNCH_SNIFF.get();
+        int i = Mth.nextInt(random, 0, SNMSoundHandler.DEVOURER_HURT.size());
+        if (i < SNMSoundHandler.DEVOURER_HURT.size()) {
+            return SNMSoundHandler.DEVOURER_HURT.get(i).get();
+        }
+        return null;
     }
-
     @Nullable
     @Override
     protected SoundEvent getDeathSound() {
@@ -157,5 +169,4 @@ public class EntityTheDevourer extends Monster {
     protected void playStepSound(BlockPos p_34316_, BlockState p_34317_) {
         this.playSound(this.getStepSound(), 0.15F, 1.0F);
     }
-
 }

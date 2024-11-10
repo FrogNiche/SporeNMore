@@ -1,29 +1,30 @@
 package com.cosmo.sporenmore.server.entity.ai;
 
-import com.cosmo.sporenmore.server.entity.entity.EntityClawFox;
-import com.cosmo.sporenmore.server.entity.entity.EntityDevourer;
+import com.cosmo.sporenmore.server.entity.entity.EntityCrunch;
+import com.cosmo.sporenmore.server.entity.entity.runts.EntityMaceRunt;
+import com.cosmo.sporenmore.server.item.SNMItemHandler;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
+import net.minecraft.world.item.ItemStack;
 
-public class DevourerSmashGoal extends MeleeAttackGoal {
-    private final EntityDevourer entity;
-    private int attackDelay = 40;
-    private int ticksUntilNextAttack = 40;
+public class MaceRuntAttackGoal extends MeleeAttackGoal {
+    private final EntityMaceRunt entity;
+    private int attackDelay = 10;
+    private int ticksUntilNextAttack = 20;
     private boolean shouldCountTillNextAttack = false;
 
-    public DevourerSmashGoal(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
+    public MaceRuntAttackGoal(PathfinderMob pMob, double pSpeedModifier, boolean pFollowingTargetEvenIfNotSeen) {
         super(pMob, pSpeedModifier, pFollowingTargetEvenIfNotSeen);
-        entity = ((EntityDevourer) pMob);
+        entity = ((EntityMaceRunt) pMob);
     }
 
     @Override
     public void start() {
         super.start();
-        attackDelay = 40;
-        ticksUntilNextAttack = 40;
+        attackDelay = 10;
+        ticksUntilNextAttack = 20;
     }
 
     @Override
@@ -67,11 +68,11 @@ public class DevourerSmashGoal extends MeleeAttackGoal {
         return this.ticksUntilNextAttack;
     }
 
-
     protected void performAttack(LivingEntity pEnemy) {
         this.resetAttackCooldown();
         this.mob.swing(InteractionHand.MAIN_HAND);
         this.mob.doHurtTarget(pEnemy);
+
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.cosmo.sporenmore.server.entity.entity;
 
 import com.cosmo.sporenmore.SporeNMore;
+import com.cosmo.sporenmore.server.entity.entity.runts.EntityMaceRunt;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -17,9 +18,13 @@ public class SNMEntityHandler {
             EntityType.Builder.of(EntityCrunch::new,
             MobCategory.MONSTER).sized(3.50f, 5f));
 
-    public static final RegistryObject<EntityType<EntityTheDevourer>> THE_DEVOURER = register("the_devourer",
-            EntityType.Builder.of(EntityTheDevourer::new,
-                    MobCategory.MONSTER).sized(3.50f, 5f));
+    public static final RegistryObject<EntityType<EntityMaceRunt>> MACE_RUNT = register("mace_runt",
+            EntityType.Builder.of(EntityMaceRunt::new,
+                    MobCategory.MONSTER));
+
+    public static final RegistryObject<EntityType<EntityDevourer>> THE_DEVOURER = register("the_devourer",
+            EntityType.Builder.of(EntityDevourer::new,
+                    MobCategory.MONSTER));
 
     public static final RegistryObject<EntityType<EntityLeGiant>> LE_GIANTE = register("le_giante", EntityType.Builder.of(EntityLeGiant::new,
             MobCategory.CREATURE));

@@ -7,6 +7,7 @@
   "entity.sporenmore.devourer": "The Devourer",
   "entity.sporenmore.decayed": "Decayed",
   "entity.sporenmore.the_devourer": "The Devourer",
+  "entity.sporenmore.mace_runt": "Mace Runt",
 
   "_comment": "Titles/Advancements",
   "item.sporenmore.logo": "Spore N' More",
@@ -23,9 +24,12 @@
   "item.sporenmore.bone_hammer": "Bone Hammer",
   "item.sporenmore.twinmill_axe": "Twin-mill Axe",
   "item.sporenmore.monstrous_shard": "Monstrous Shard",
+  "item.sporenmore.champions_belt": "Champions Belt",
+  "item.sporenmore.crunch_tail": "The Crunch's Tail",
 
   "_comment": "Spawn Eggs",
   "item.sporenmore.the_crunch_spawn_egg": "The Crunch Spawn Egg",
+  "item.sporenmore.mace_runt_spawn_egg": "Mace Runt Spawn Egg",
   "item.sporenmore.the_devourer_spawn_egg": "The Devourer Spawn Egg",
   "item.sporenmore.jf_spawn_egg": "Jet-Pack Fox Spawn Egg",
   "item.sporenmore.flying_spore_fox": "Flying Spored Fox Spawn Egg",

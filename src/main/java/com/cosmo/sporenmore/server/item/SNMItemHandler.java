@@ -19,6 +19,10 @@ public class SNMItemHandler {
             () -> new ForgeSpawnEggItem(SNMEntityHandler.CRUNCH, 0xb05122, 0xcc6920,
                     new Item.Properties()));
 
+    public static final RegistryObject<Item> MACE_RUNT_SPAWN_EGG = ITEMS.register("mace_runt_spawn_egg",
+            () -> new ForgeSpawnEggItem(SNMEntityHandler.MACE_RUNT, 0xcc6920, 0x93713c,
+                    new Item.Properties()));
+
     public static final RegistryObject<Item> GIANT_SPAWN_EGG = ITEMS.register("giant_spawn_egg",
             () -> new ForgeSpawnEggItem(SNMEntityHandler.LE_GIANTE, 0xe27c21, 0xb05122,
                     new Item.Properties()));
@@ -38,9 +42,13 @@ public static final RegistryObject<Item> FUR = ITEMS.register("fur",
     public static final RegistryObject<Item> LOGO = ITEMS.register("logo",
             () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
-    public static final RegistryObject<Item> MONSTROUS_SHARD = ITEMS.register("monstrous_shard",
-            () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> CHAMPIONS_BELT = ITEMS.register("champions_belt",
 
+            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
+
+    public static final RegistryObject<Item> CRUNCH_TAIL = ITEMS.register("crunch_tail",
+
+            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)));
 
     public static final RegistryObject<Item> DEVOURER_BANDAGE = ITEMS.register("devourer_bandage",
             () -> new Item(new Item.Properties()));
@@ -51,5 +59,4 @@ public static final RegistryObject<Item> FUR = ITEMS.register("fur",
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
         SPAWN_EGGS.register(eventBus);
-    }
-}
+    }}

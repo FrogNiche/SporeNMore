@@ -7,14 +7,15 @@ import com.cosmo.sporenmore.client.particle.SNMParticleTypes;
 import com.cosmo.sporenmore.client.sound.SNMSoundHandler;
 import com.cosmo.sporenmore.server.block.SNMBlockHandler;
 import com.cosmo.sporenmore.server.entity.entity.SNMEntityHandler;
-import com.cosmo.sporenmore.server.renderer.ClawFoxRenderer;
-import com.cosmo.sporenmore.server.renderer.CrunchRenderer;
+import com.cosmo.sporenmore.server.renderer.entity.ClawFoxRenderer;
+import com.cosmo.sporenmore.server.renderer.entity.CrunchRenderer;
 import com.cosmo.sporenmore.server.entity.entity.EntityFatFox;
 import com.cosmo.sporenmore.server.entity.entity.EntityTallFox;
 import com.cosmo.sporenmore.server.entity.entity.EntityLeGiant;
 import com.cosmo.sporenmore.server.item.SNMItemHandler;
 import com.cosmo.sporenmore.server.item.tab.SNMTab;
-import com.cosmo.sporenmore.server.renderer.TheDevourerRenderer;
+import com.cosmo.sporenmore.server.renderer.entity.TheDevourerRenderer;
+import com.cosmo.sporenmore.server.renderer.entity.runt.MaceRuntRenderer;
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -85,6 +86,7 @@ public class SporeNMore {
     private void clientSetup(FMLClientSetupEvent event) {
         EntityRenderers.register(SNMEntityHandler.CRUNCH.get(), CrunchRenderer::new);
         EntityRenderers.register(SNMEntityHandler.THE_DEVOURER.get(), TheDevourerRenderer::new);
+        EntityRenderers.register(SNMEntityHandler.MACE_RUNT.get(), MaceRuntRenderer::new);
         EntityRenderers.register(SNMEntityHandler.CLAWFOX.get(), ClawFoxRenderer::new);
         EntityRenderers.register(SNMEntityHandler.LE_GIANTE.get(), makeRenderer(new ModelGiant()));
         EntityRenderers.register(SNMEntityHandler.FAT_FOX.get(),
@@ -105,6 +107,7 @@ public class SporeNMore {
         if (event.getTab() == SNMTab.SPORE_N_MORE) {
             event.accept(SNMItemHandler.SPORE_LANDER);
            event.accept(SNMItemHandler.FUR);
+            event.accept(SNMItemHandler.CHAMPIONS_BELT);
             event.accept(SNMItemHandler.DEVOURER_BANDAGE);
             event.accept(SNMBlockHandler.BLOCK_OF_FUR);
             event.accept(SNMBlockHandler.RUGGED_STONE);
@@ -113,6 +116,8 @@ public class SporeNMore {
             event.accept(SNMItemHandler.CLAWFOX_SPAWN_EGG);
             event.accept(SNMItemHandler.GIANT_SPAWN_EGG);
             event.accept(SNMItemHandler.THE_DEVOURER_SPAWN_EGG);
+            event.accept(SNMItemHandler.MACE_RUNT_SPAWN_EGG);
+            event.accept(SNMItemHandler.CRUNCH_TAIL);
         }
     }
 
@@ -127,6 +132,7 @@ public class SporeNMore {
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(SNMEntityHandler.CRUNCH.get(), CrunchRenderer::new);
             EntityRenderers.register(SNMEntityHandler.CLAWFOX.get(), ClawFoxRenderer::new);
+            EntityRenderers.register(SNMEntityHandler.MACE_RUNT.get(), MaceRuntRenderer::new);
             EntityRenderers.register(SNMEntityHandler.THE_DEVOURER.get(), TheDevourerRenderer::new);
             EntityRenderers.register(SNMEntityHandler.LE_GIANTE.get(), makeRenderer(new ModelGiant()));
             EntityRenderers.register(SNMEntityHandler.TALL_FOX.get(), makeRenderer(new ModelTallFox()));

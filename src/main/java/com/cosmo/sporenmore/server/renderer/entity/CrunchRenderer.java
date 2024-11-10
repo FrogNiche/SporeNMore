@@ -1,8 +1,10 @@
-package com.cosmo.sporenmore.server.renderer;
+package com.cosmo.sporenmore.server.renderer.entity;
 import com.cosmo.sporenmore.SporeNMore;
 import com.cosmo.sporenmore.client.models.entity.model.CrunchModel;
 import com.cosmo.sporenmore.client.models.entity.model.ModModelLayers;
 import com.cosmo.sporenmore.server.entity.entity.EntityCrunch;
+import com.cosmo.sporenmore.server.renderer.entity.layer.CrunchGlowLayer;
+import com.cosmo.sporenmore.server.renderer.entity.layer.DevourerGlowLayer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -24,6 +26,7 @@ public class CrunchRenderer extends MobRenderer<EntityCrunch, CrunchModel<Entity
     public void render(EntityCrunch pEntity, float pEntityYaw, float pPartialTicks, PoseStack pMatrixStack,
                        MultiBufferSource pBuffer, int pPackedLight) {
         super.render(pEntity, pEntityYaw, pPartialTicks, pMatrixStack, pBuffer, pPackedLight);
+        this.addLayer(new CrunchGlowLayer<>(this));
     }
 
 }

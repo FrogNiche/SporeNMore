@@ -1,4 +1,4 @@
-package com.cosmo.sporenmore.server.renderer;
+package com.cosmo.sporenmore.server.renderer.entity;
 import com.cosmo.sporenmore.SporeNMore;
 import com.cosmo.sporenmore.client.models.entity.model.ClawFoxModel;
 import com.cosmo.sporenmore.client.models.entity.model.ModModelLayers;
